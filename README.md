@@ -34,7 +34,16 @@ Habilite **Estado ativo/rascunho** e **Acesso à API de frentes de loja online**
 
 Sem foto, aparece o avatar padrão. Cargo, categoria e produtos são opcionais. Categorias desconhecidas não exibem selo. Produtos devem estar disponíveis no canal Loja online para suas referências aparecerem na vitrine.
 
-A demonstração contém Marina Lopes, Rafael Mendes, Camila Torres, Lucas Ferreira, Beatriz Nogueira e Gustavo Almeida. Cada vendedor possui um avatar próprio e uma seleção diferente de produtos, com duas a quatro referências por card.
+A demonstração contém seis vendedores com avatares próprios. Cada um vende um único produto, de uma categoria exclusiva:
+
+| Vendedor | Produto |
+| --- | --- |
+| Marina Lopes | Camiseta de algodão premium |
+| Rafael Mendes | Tênis casual urbano |
+| Camila Torres | Mochila executiva |
+| Lucas Ferreira | Relógio clássico |
+| Beatriz Nogueira | Óculos de sol |
+| Gustavo Almeida | Boné aba curva |
 
 ## Editor do tema
 
@@ -87,6 +96,8 @@ Validação feita em 04/11/2026:
 Para inspecionar a matriz de layouts, execute `node scripts/render-browser-fixtures.mjs` e abra `dist/validation/responsive-matrix.html` no navegador. Ela combina as opções de colunas com nomes longos e padding de 48 px.
 
 O Lighthouse 13.6.0 foi executado no preview real, com três medições mobile para cada cenário. A referência usa o mesmo tema, com o título e o subtítulo estáticos, sem consulta ao metaobjeto nem cards. O teste usa rede simulada de 1,6 Mbps, RTT de 150 ms e CPU 4× mais lenta; a senha de visitante foi autenticada antes da auditoria.
+
+Os relatórios registram a rodada anterior de dados, com seis vendedores e 17 referências de produtos. Depois dessa medição, o catálogo foi organizado em seis produtos exclusivos, um por vendedor; o código da seção permaneceu igual.
 
 | Métrica — mediana de 3 execuções | Com vendedores | Referência sem cards |
 | --- | --- | --- |
