@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "vendors": { "type": "ec-vendors-metaobject", "settings": {} }
+  },
+  "order": ["vendors"]
+}
