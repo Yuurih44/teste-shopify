@@ -1,18 +1,23 @@
 {
   "lighthouseVersion": "13.6.0",
-  "url": "https://qqzw3m7vlyalcvor-100906303858.shopifypreview.com/",
+  "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+  "theme": {
+    "name": "Horizon",
+    "id": "195588358514"
+  },
   "method": {
-    "baseline": "Mesmo tema, t?tulo e subt?tulo est?ticos, sem consulta ao metaobjeto e sem cards.",
+    "baseline": "Mesmo tema Horizon, CSS, h1, titulo, subtitulo, schema, menu e rodape; bloco dos vendedores e consulta ao metaobjeto temporariamente removidos. Original restaurado pelo responsavel apos coleta.",
     "mobileRunsPerScenario": 3,
     "desktopRuns": 1,
-    "visitorAuthentication": "Senha de visitante autenticada antes da auditoria; nenhum cookie exportado.",
+    "visitorAuthentication": "Visitante autenticado antes das auditorias. Nenhum valor de cookie exportado.",
     "limits": [
-      "Medi??es de laborat?rio no preview de desenvolvimento, n?o dados de campo.",
-      "Scripts da plataforma e do preview presentes nos dois cen?rios.",
-      "Armazenamento preservado para manter autentica??o; bytes transferidos variaram entre execu??es.",
-      "Uma execu??o desktop, sem compara??o desktop de refer?ncia."
+      "Medicoes de laboratorio em preview, nao dados de campo.",
+      "Scripts Shopify e toolbar do preview presentes em ambos os cenarios.",
+      "Armazenamento preservado para manter autenticacao; cache e bytes variam entre execucoes.",
+      "Cenarios executados em sequencia, sem intercalacao. Variacao observada impede atribuir causalidade a pequenas diferencas.",
+      "Uma execucao desktop, sem baseline desktop."
     ],
-    "catalogAtAudit": "Seis vendedores e 17 refer?ncias de produtos. Ap?s a medi??o, o cat?logo foi alterado para seis produtos exclusivos, um por vendedor, sem mudan?a no c?digo da se??o."
+    "catalogAtAudit": "Seis vendedores, seis avatares exclusivos e seis produtos exclusivos; um produto por vendedor."
   },
   "mobile": {
     "settings": {
@@ -36,88 +41,97 @@
       "disableStorageReset": true,
       "onlyCategories": [
         "performance"
-      ]
+      ],
+      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36"
     },
     "withVendors": {
       "runs": [
         {
-          "id": "with-mobile-1",
-          "timestamp": "2026-11-04T15:51:18.087Z",
-          "score": 74,
-          "fcpMs": 1562.6402,
-          "lcpMs": 1562.6402,
-          "tbtMs": 1425.5000000000002,
+          "id": "horizon-with-mobile-1",
+          "timestamp": "2026-11-04T19:44:22.842Z",
+          "score": 90,
+          "fcpMs": 1180.1585765197754,
+          "lcpMs": 1352.7746768310546,
+          "tbtMs": 415,
           "cls": 0.00003952341088212718,
-          "reportSha256": "4143e98f14cc25a75069f84700bb6288e00f319ec45d57fd14cb0f5300316f20"
+          "transferBytes": 121101,
+          "reportSha256": "9b485e2a381c2365a586d37d941fe8c2fc068bba405ad34484ab9f57fce48e92"
         },
         {
-          "id": "with-mobile-2",
-          "timestamp": "2026-11-04T15:51:34.577Z",
-          "score": 75,
-          "fcpMs": 1557.0199499999999,
-          "lcpMs": 1557.0199499999999,
-          "tbtMs": 1239.4999999999998,
+          "id": "horizon-with-mobile-2",
+          "timestamp": "2026-11-04T19:44:36.129Z",
+          "score": 86,
+          "fcpMs": 1077.7278937438964,
+          "lcpMs": 1077.7278937438964,
+          "tbtMs": 560.3150062561035,
           "cls": 0.00003952341088212718,
-          "reportSha256": "8a1f73066f89d4f6b48de57ff6b32dbe4c3d408af011cac8223eadb8f2c7ebec"
+          "transferBytes": 83158,
+          "reportSha256": "50c03daf1ed6b6a5a0b0e8f2c2bdad764a8649ba30a088adb8a75e68213f5fb2"
         },
         {
-          "id": "with-mobile-3",
-          "timestamp": "2026-11-04T15:51:50.242Z",
-          "score": 75,
-          "fcpMs": 1683.9000999999998,
-          "lcpMs": 1683.9000999999998,
-          "tbtMs": 1233,
+          "id": "horizon-with-mobile-3",
+          "timestamp": "2026-11-04T19:44:47.791Z",
+          "score": 95,
+          "fcpMs": 1122.92,
+          "lcpMs": 1122.92,
+          "tbtMs": 261.5,
           "cls": 0.00003952341088212718,
-          "reportSha256": "6761e8d2ccbde0b18397bda2d802e0e382ba2b9ea3c0d931d901f680cd4a17eb"
+          "transferBytes": 29500,
+          "reportSha256": "3170e1538a9c30fd26f67faa4c2d1cf62b40c4675202851c58a7839df1838d68"
         }
       ],
       "median": {
-        "score": 75,
-        "fcpMs": 1562.6402,
-        "lcpMs": 1562.6402,
-        "tbtMs": 1239.4999999999998,
-        "cls": 0.00003952341088212718
+        "score": 90,
+        "fcpMs": 1122.92,
+        "lcpMs": 1122.92,
+        "tbtMs": 415,
+        "cls": 0.00003952341088212718,
+        "transferBytes": 83158
       }
     },
     "baseline": {
       "runs": [
         {
-          "id": "baseline-mobile-1",
-          "timestamp": "2026-11-04T15:53:50.482Z",
-          "score": 76,
-          "fcpMs": 1655.52759,
-          "lcpMs": 1655.52759,
-          "tbtMs": 1099.4999999999998,
+          "id": "horizon-baseline-mobile-1",
+          "timestamp": "2026-11-04T19:50:06.067Z",
+          "score": 79,
+          "fcpMs": 1122.0485265197754,
+          "lcpMs": 1258.6756608428955,
+          "tbtMs": 901.9999999999998,
           "cls": 0.00003952341088212718,
-          "reportSha256": "f491e7c6813849b0f84ae5abea3d4fb1d95a72b5bf5e978aa2c89ea6d76fe6fd"
+          "transferBytes": 27416,
+          "reportSha256": "0697ffba6972767253d558e2d1f61b4005f1f6c0c592b669736e05a5a933dd1b"
         },
         {
-          "id": "baseline-mobile-2",
-          "timestamp": "2026-11-04T15:54:05.347Z",
-          "score": 76,
-          "fcpMs": 1522.2030499999998,
-          "lcpMs": 1522.2030499999998,
-          "tbtMs": 1165.5000000000002,
+          "id": "horizon-baseline-mobile-2",
+          "timestamp": "2026-11-04T19:50:19.598Z",
+          "score": 83,
+          "fcpMs": 1198.2534,
+          "lcpMs": 1198.2534,
+          "tbtMs": 684.5000000000005,
           "cls": 0.00003952341088212718,
-          "reportSha256": "4b768c23d7897f7371411a197e021379c55421226a9fd52d985bb03746f8f7dd"
+          "transferBytes": 43469,
+          "reportSha256": "b54a217b4b314dfee0d722d239b68ca2ff379612f6d098ec5b192587b6136324"
         },
         {
-          "id": "baseline-mobile-3",
-          "timestamp": "2026-11-04T15:54:19.576Z",
-          "score": 74,
-          "fcpMs": 1558.53035,
-          "lcpMs": 1558.53035,
-          "tbtMs": 1410.5,
+          "id": "horizon-baseline-mobile-3",
+          "timestamp": "2026-11-04T19:50:31.873Z",
+          "score": 86,
+          "fcpMs": 1045.4968765197755,
+          "lcpMs": 1045.4968765197755,
+          "tbtMs": 555,
           "cls": 0.00003952341088212718,
-          "reportSha256": "df3c08b33c673782b230c57a80cba3742d951e0e9a7172f0ab36056af0b6c20d"
+          "transferBytes": 42691,
+          "reportSha256": "b109666d5709fec947061cda27f865469c777a404a607ab9b5b4ec7989952da0"
         }
       ],
       "median": {
-        "score": 76,
-        "fcpMs": 1558.53035,
-        "lcpMs": 1558.53035,
-        "tbtMs": 1165.5000000000002,
-        "cls": 0.00003952341088212718
+        "score": 83,
+        "fcpMs": 1122.0485265197754,
+        "lcpMs": 1198.2534,
+        "tbtMs": 684.5000000000005,
+        "cls": 0.00003952341088212718,
+        "transferBytes": 42691
       }
     }
   },
@@ -143,23 +157,36 @@
       "disableStorageReset": true,
       "onlyCategories": [
         "performance"
-      ]
+      ],
+      "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
     },
     "run": {
-      "id": "with-desktop-1",
-      "timestamp": "2026-11-04T15:58:21.221Z",
-      "score": 96,
-      "fcpMs": 467.4703241882324,
-      "lcpMs": 467.4703241882324,
-      "tbtMs": 175.99999999999994,
-      "cls": 0,
-      "reportSha256": "61e733782e06106bb410b9371e0b33db4be2ae9f3c3cbf2f02f1bd06a45ffc6a"
+      "id": "horizon-with-desktop-1",
+      "timestamp": "2026-11-04T19:45:16.935Z",
+      "score": 100,
+      "fcpMs": 259.51832418823244,
+      "lcpMs": 284.64368467712404,
+      "tbtMs": 0,
+      "cls": 0.0050846035993637444,
+      "transferBytes": 43062,
+      "reportSha256": "4f54e114f865e583246854491a0f6540c79ff054417cadd677e4a980affdcd13"
     },
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+  },
+  "comparison": {
+    "mobileWithMinusBaseline": {
+      "score": 7,
+      "fcpMs": 0.8714734802247222,
+      "lcpMs": -75.33339999999998,
+      "tbtMs": -269.50000000000045,
+      "cls": 0
+    },
+    "interpretation": "O baseline teve TBT maior nesta coleta. Isso demonstra variacao de execucao/plataforma e nao prova que adicionar cards melhora performance."
   },
   "reports": {
     "mobile": "lighthouse-mobile.html",
     "baseline": "lighthouse-baseline.html",
     "desktop": "lighthouse-desktop.html"
-  }
+  },
+  "representativeSelection": "Mobile com vendedores: run1, score e TBT medianos. Baseline: run2, score e TBT medianos. Medianas de cada metrica calculadas independentemente."
 }

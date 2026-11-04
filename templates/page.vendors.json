@@ -1,6 +1,6 @@
 {
   "sections": {
-    "vendors": { "type": "ec-vendors-metaobject", "settings": {} }
+    "vendors": { "type": "ec-vendors-metaobject", "settings": { "heading_tag": "h1" } }
   },
   "order": ["vendors"]
 }

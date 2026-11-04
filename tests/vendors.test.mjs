@@ -74,3 +74,10 @@ test('schema exposes required editor controls with a preset', async () => {
   }
   assert.ok(schema.presets.length > 0);
 });
+
+test('uses h2 when embedded and allows h1 for a standalone page', async () => {
+  const embedded = await render();
+  const standalone = await render([], { heading_tag: 'h1' });
+  assert.match(embedded, /<h2 class="ec-vendors__title"/);
+  assert.match(standalone, /<h1 class="ec-vendors__title"/);
+});

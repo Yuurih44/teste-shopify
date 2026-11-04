@@ -1,6 +1,10 @@
 {%- liquid
   assign vendor_type = section.settings.metaobject_type | strip | default: 'store_vendor'
   assign vendor_definition = shop.metaobjects[vendor_type]
+  assign heading_tag = 'h2'
+  if section.settings.heading_tag == 'h1'
+    assign heading_tag = 'h1'
+  endif
 -%}
 
 {%- capture avatar_icon -%}
@@ -91,7 +95,7 @@
     {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
       <header class="ec-vendors__header">
         {%- if section.settings.title != blank -%}
-          <h2 class="ec-vendors__title" id="ec-vendors-title-{{ section.id }}">{{ section.settings.title | escape }}</h2>
+          <{{ heading_tag }} class="ec-vendors__title" id="ec-vendors-title-{{ section.id }}">{{ section.settings.title | escape }}</{{ heading_tag }}>
         {%- endif -%}
         {%- if section.settings.subtitle != blank -%}
           <p class="ec-vendors__subtitle">{{ section.settings.subtitle | escape }}</p>
@@ -178,6 +182,7 @@
   "class": "ec-vendors-section",
   "settings": [
     { "type": "text", "id": "title", "label": "Título da seção", "default": "Desafio Shopify" },
+    { "type": "select", "id": "heading_tag", "label": "Nível do título", "options": [ { "value": "h1", "label": "H1 — título da página" }, { "value": "h2", "label": "H2 — título de seção" } ], "default": "h2" },
     { "type": "textarea", "id": "subtitle", "label": "Subtítulo da seção", "default": "Seção para mostrar vendedores disponíveis de uma loja" },
     { "type": "header", "content": "Dados" },
     { "type": "text", "id": "metaobject_type", "label": "Tipo do metaobjeto", "default": "store_vendor", "info": "Use o identificador da definição, com acesso à loja online e entradas ativas." },
