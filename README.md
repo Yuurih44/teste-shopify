@@ -34,6 +34,8 @@ Habilite **Estado ativo/rascunho** e **Acesso à API de frentes de loja online**
 
 Sem foto, aparece o avatar padrão. Cargo, categoria e produtos são opcionais. Categorias desconhecidas não exibem selo. Produtos devem estar disponíveis no canal Loja online para suas referências aparecerem na vitrine.
 
+A demonstração contém Marina Lopes, Rafael Mendes, Camila Torres, Lucas Ferreira, Beatriz Nogueira e Gustavo Almeida. Cada vendedor possui um avatar próprio e uma seleção diferente de produtos, com duas a quatro referências por card.
+
 ## Editor do tema
 
 | Configuração | Opções |
@@ -84,7 +86,21 @@ Validação feita em 04/11/2026:
 
 Para inspecionar a matriz de layouts, execute `node scripts/render-browser-fixtures.mjs` e abra `dist/validation/responsive-matrix.html` no navegador. Ela combina as opções de colunas com nomes longos e padding de 48 px.
 
-Não foi executado Lighthouse neste ambiente: o pacote não estava instalado e o acesso do terminal ao registro npm estava bloqueado. Para concluir essa verificação, abra o preview autenticado no Chrome, execute **DevTools → Lighthouse → Mobile**, repita com a seção oculta e compare três execuções de cada cenário. Sem essa medição, não há afirmação de nota ou de ausência de regressão no Lighthouse.
+O Lighthouse 13.6.0 foi executado no preview real, com três medições mobile para cada cenário. A referência usa o mesmo tema, com o título e o subtítulo estáticos, sem consulta ao metaobjeto nem cards. O teste usa rede simulada de 1,6 Mbps, RTT de 150 ms e CPU 4× mais lenta; a senha de visitante foi autenticada antes da auditoria.
+
+| Métrica — mediana de 3 execuções | Com vendedores | Referência sem cards |
+| --- | --- | --- |
+| Performance | 75/100 | 76/100 |
+| FCP | 1,563 s | 1,559 s |
+| LCP | 1,563 s | 1,559 s |
+| TBT | 1.239,5 ms | 1.165,5 ms |
+| CLS | 0,00004 | 0,00004 |
+
+Nesta amostra não apareceu regressão relevante na pontuação ou no LCP. O tempo de bloqueio permanece alto nos dois cenários; as tarefas mais longas foram atribuídas aos scripts da Shopify, como Web Pixels Manager, Shop JS e Performance Kit. Os testes foram feitos no preview, com seus scripts de desenvolvimento, e não representam métricas de campo de uma loja publicada.
+
+Uma execução complementar com o preset desktop oficial obteve **96/100**, FCP/LCP de **467 ms**, TBT de **176 ms** e CLS **0**. Todas as sete execuções terminaram na vitrine, sem erros de auditoria ou avisos.
+
+[Resumo das execuções](docs/evidence/lighthouse-summary.json) · [Relatório mobile com vendedores](docs/evidence/lighthouse-mobile.html) · [Relatório de referência](docs/evidence/lighthouse-baseline.html) · [Relatório desktop](docs/evidence/lighthouse-desktop.html)
 
 As imagens usam dimensões reservadas, `srcset`, tamanhos reduzidos e lazy loading. A seção não adiciona scripts nem fontes externas. A navegação acima de 250 entradas não foi exercitada com dados reais nesta loja.
 
@@ -92,7 +108,6 @@ As imagens usam dimensões reservadas, `srcset`, tamanhos reduzidos e lazy loadi
 
 - [Desktop](docs/evidence/desktop.png)
 - [Mobile](docs/evidence/mobile.png)
-- [Controles alterados no editor, duas colunas no mobile](docs/evidence/editor-controls-mobile.png)
 - [Zero registros](docs/evidence/zero-records.png)
 
 O repositório contém o tema de demonstração, a seção independente, os testes e o script de empacotamento.
