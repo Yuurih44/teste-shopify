@@ -1,6 +1,7 @@
 {%- liquid
   assign vendor_type = section.settings.metaobject_type | strip | default: 'store_vendor'
   assign vendor_definition = shop.metaobjects[vendor_type]
+  assign card_style = section.settings.card_style | default: 'figma'
   assign heading_tag = 'h2'
   if section.settings.heading_tag == 'h1'
     assign heading_tag = 'h1'
@@ -101,9 +102,46 @@
       #ec-vendors-{{ section.id }} .ec-vendors__products { gap: 8px; }
     {% endif %}
   }
+  {% if card_style == 'figma' %}
+    #ec-vendors-{{ section.id }} { color: #000; font-family: Arial, Helvetica, sans-serif; }
+    #ec-vendors-{{ section.id }} .ec-vendors__inner { max-width: 1578px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__header { text-align: center; margin-bottom: 80px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__title { font-size: clamp(30px, 3.2vw, 48px); font-weight: 700; letter-spacing: normal; line-height: 1.2; }
+    #ec-vendors-{{ section.id }} .ec-vendors__subtitle { max-width: 72ch; margin: 14px auto 0; font-size: clamp(17px, 1.6vw, 24px); line-height: 1.5; color: inherit; }
+    #ec-vendors-{{ section.id }} .ec-vendors__grid { gap: 34px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__card { min-height: 270px; border-width: 2px; border-radius: 32px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 60px; height: 60px; flex-basis: 60px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__name { font-size: 24px; font-weight: 700; letter-spacing: normal; line-height: 1.25; }
+    #ec-vendors-{{ section.id }} .ec-vendors__role { margin-top: 2px; font-size: 24px; line-height: 1.3; color: inherit; }
+    #ec-vendors-{{ section.id }} .ec-vendors__badge { width: 50px; height: 50px; padding: 0; flex: 0 0 50px; border-radius: 50%; }
+    #ec-vendors-{{ section.id }} .ec-vendors__badge svg { width: 28px; height: 28px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__products-label { margin: 40px 0 12px; padding: 0; border: 0; font-size: 14px; color: #555; }
+    @container ec-vendor (max-width: 280px) {
+      #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 42px; height: 42px; flex-basis: 42px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__badge { width: 34px; height: 34px; flex-basis: 34px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__badge svg { width: 22px; height: 22px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__name,
+      #ec-vendors-{{ section.id }} .ec-vendors__role { font-size: 16px; }
+    }
+    @media (max-width: 749px) {
+      #ec-vendors-{{ section.id }} .ec-vendors__header { margin-bottom: 36px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__grid { gap: 20px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__card { min-height: 230px; border-radius: 24px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 48px; height: 48px; flex-basis: 48px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__badge { width: 40px; height: 40px; flex-basis: 40px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__name,
+      #ec-vendors-{{ section.id }} .ec-vendors__role { font-size: 20px; }
+      {% if section.settings.columns_mobile == '2' %}
+        #ec-vendors-{{ section.id }} .ec-vendors__name,
+        #ec-vendors-{{ section.id }} .ec-vendors__role { font-size: 16px; }
+        #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 42px; height: 42px; flex-basis: 42px; }
+        #ec-vendors-{{ section.id }} .ec-vendors__badge { width: 34px; height: 34px; flex-basis: 34px; }
+      {% endif %}
+    }
+  {% endif %}
 </style>
 
-<section id="ec-vendors-{{ section.id }}" {% if section.settings.title != blank %}aria-labelledby="ec-vendors-title-{{ section.id }}"{% else %}aria-label="Vendedores"{% endif %}>
+<section id="ec-vendors-{{ section.id }}" class="ec-vendors--{{ card_style | escape }}" {% if section.settings.title != blank %}aria-labelledby="ec-vendors-title-{{ section.id }}"{% else %}aria-label="Vendedores"{% endif %}>
   <div class="ec-vendors__inner">
     {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
       <header class="ec-vendors__header">
@@ -130,7 +168,7 @@
               <div class="ec-vendors__identity">
                 <div class="ec-vendors__avatar">
                   {%- if section.settings.show_vendor_photos == false -%}
-                    <span class="ec-vendors__initial" aria-hidden="true">{{ vendor_name | slice: 0 | upcase | escape }}</span>
+                    {%- if card_style == 'figma' -%}{{ avatar_icon }}{%- else -%}<span class="ec-vendors__initial" aria-hidden="true">{{ vendor_name | slice: 0 | upcase | escape }}</span>{%- endif -%}
                   {%- elsif vendor_photo != blank -%}
                     {{ vendor_photo | image_url: width: 120 | image_tag: widths: '60, 120', sizes: '60px', loading: 'lazy', alt: '' }}
                   {%- else -%}
@@ -143,7 +181,7 @@
                 </div>
                 {%- if vendor_tier == 'ouro' or vendor_tier == 'prata' or vendor_tier == 'bronze' -%}
                   <span class="ec-vendors__badge ec-vendors__badge--{{ vendor_tier }}" role="img" aria-label="Categoria {{ vendor_tier }}">
-                    <span aria-hidden="true">{{ vendor_tier | capitalize }}</span>
+                    {%- if card_style == 'figma' -%}<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 12 3-7h6l3 7M5 16h7l3 8-2 2H3l-1-2 3-8Zm15 0h7l3 8-1 2H19l-2-2 3-8Z"/></svg>{%- else -%}<span aria-hidden="true">{{ vendor_tier | capitalize }}</span>{%- endif -%}
                   </span>
                 {%- endif -%}
               </div>
@@ -217,12 +255,13 @@
     { "type": "header", "content": "Dados" },
     { "type": "text", "id": "metaobject_type", "label": "Tipo do metaobjeto", "default": "store_vendor", "info": "Use o identificador da definição, com acesso à loja online e entradas ativas." },
     { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "card_style", "label": "Estilo dos cards", "options": [ { "value": "figma", "label": "Referência Figma" }, { "value": "catalog", "label": "Catálogo" } ], "default": "figma" },
     { "type": "range", "id": "columns_desktop", "label": "Itens por linha no desktop", "min": 1, "max": 4, "step": 1, "default": 3 },
     { "type": "select", "id": "columns_mobile", "label": "Itens por linha no mobile", "options": [ { "value": "1", "label": "1 coluna" }, { "value": "2", "label": "2 colunas" } ], "default": "1" },
     { "type": "checkbox", "id": "show_product_details", "label": "Exibir nome e preço dos produtos", "default": false },
     { "type": "checkbox", "id": "show_vendor_photos", "label": "Exibir fotos dos vendedores", "default": true },
-    { "type": "color", "id": "border_color", "label": "Cor da borda", "default": "#ffcf00" },
-    { "type": "color", "id": "card_background", "label": "Cor de fundo do card", "default": "#fffcf7" },
+    { "type": "color", "id": "border_color", "label": "Cor da borda", "default": "#ffd324" },
+    { "type": "color", "id": "card_background", "label": "Cor de fundo do card", "default": "#fffcf6" },
     { "type": "color", "id": "section_background", "label": "Cor de fundo da seção", "default": "#f5f5f5" },
     { "type": "range", "id": "card_padding", "label": "Espaçamento interno do card", "min": 0, "max": 48, "step": 2, "unit": "px", "default": 30 },
     { "type": "range", "id": "section_padding", "label": "Espaçamento vertical da seção", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 128 }

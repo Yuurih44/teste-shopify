@@ -1,38 +1,94 @@
 {
   "lighthouseVersion": "13.6.0",
   "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
-  "version": "Redesign com produtos detalhados, faixa amarela e identidade Desafio",
-  "mobileMedian": {
-    "score": 83,
-    "fcpMs": 1262.5661,
-    "lcpMs": 1472.16986,
-    "tbtMs": 693.5,
-    "cls": 0.00003952341088212718
-  },
+  "measuredAt": "2026-11-05T13:51:56.523Z",
+  "sectionSha256": "87771e20483cb5cbe07936ab6605fdd9e3c506decb119d95577b837ac6d3ad2f",
   "method": {
-    "mobileRuns": 3,
+    "mobileRunsPerScenario": 3,
     "desktopRuns": 1,
-    "visitorAuthentication": "Autenticada antes da coleta; nenhum cookie exportado.",
-    "notes": [
-      "One initial trial overlapped verification-page navigation and was excluded; run1 was repeated without concurrent navigation.",
-      "Large TBT variation persists in the repeated valid run and is retained; no score selection by result."
-    ],
+    "baseline": "Mesmo tema, hero com fotos reais, cabeçalho, rodapé, CSS e título/subtítulo; consulta ao metaobjeto e bloco dos cards removidos temporariamente.",
+    "browserCache": "Cache HTTP, CacheStorage e service workers limpos antes de cada execução; cookies preservados para autenticação de visitante.",
+    "ordering": "Três mobile e um desktop com vendedores, seguidos por três mobile de referência.",
+    "restoration": "Seção original restaurada e seis cards conferidos após as medições.",
     "limits": [
-      "Medições de laboratório em preview de desenvolvimento.",
-      "Variação alta de TBT entre execuções; os três resultados válidos foram preservados.",
-      "Não foi repetido um baseline para este redesign; o HTML de referência pertence ao visual anterior e não deve ser comparado diretamente."
+      "Dados de laboratório em preview de desenvolvimento, com scripts Shopify e barra de preview.",
+      "Cenários executados em sequência; variação entre execuções limita conclusões causais.",
+      "Uma medição desktop, sem referência desktop."
     ]
+  },
+  "mobile": {
+    "withVendors": {
+      "score": 69,
+      "fcpMs": 1106.5406,
+      "lcpMs": 1199.5857,
+      "tbtMs": 2812.4999999999995,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1531435
+    },
+    "baseline": {
+      "score": 66,
+      "fcpMs": 1114.2115,
+      "lcpMs": 2213.0251500000004,
+      "tbtMs": 4751,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1345491
+    },
+    "delta": {
+      "score": 3,
+      "fcpMs": -7.670899999999847,
+      "lcpMs": -1013.4394500000003,
+      "tbtMs": -1938.5000000000005,
+      "cls": 0,
+      "transferredBytes": 185944
+    }
+  },
+  "desktop": {
+    "name": "final-with-desktop-1",
+    "label": "with",
+    "form": "desktop",
+    "timestamp": "2026-11-05T13:49:42.278Z",
+    "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+    "score": 93,
+    "fcpMs": 290.1738,
+    "lcpMs": 547.1293000000001,
+    "tbtMs": 201.00000000000023,
+    "cls": 0.0003273305022911012,
+    "transferredBytes": 1465002,
+    "warnings": [],
+    "settings": {
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "throttling": {
+        "rttMs": 40,
+        "throughputKbps": 10240,
+        "requestLatencyMs": 0,
+        "downloadThroughputKbps": 0,
+        "uploadThroughputKbps": 0,
+        "cpuSlowdownMultiplier": 1
+      },
+      "screenEmulation": {
+        "mobile": false,
+        "width": 1350,
+        "height": 940,
+        "deviceScaleFactor": 1,
+        "disabled": false
+      }
+    }
   },
   "runs": [
     {
-      "id": "redesign-with-mobile-1",
+      "name": "final-with-mobile-1",
+      "label": "with",
       "form": "mobile",
-      "time": "2026-11-05T02:51:50.034Z",
+      "timestamp": "2026-11-05T13:48:35.879Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
       "score": 69,
-      "fcpMs": 906.3972999999997,
-      "lcpMs": 1605.3972999999996,
-      "tbtMs": 2944,
-      "cls": 0.001219348396923513,
+      "fcpMs": 1106.5406,
+      "lcpMs": 1106.5406,
+      "tbtMs": 3810,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1531435,
+      "warnings": [],
       "settings": {
         "formFactor": "mobile",
         "throttlingMethod": "simulate",
@@ -50,19 +106,22 @@
           "height": 823,
           "deviceScaleFactor": 1.75,
           "disabled": false
-        },
-        "disableStorageReset": true
+        }
       }
     },
     {
-      "id": "redesign-with-mobile-2",
+      "name": "final-with-mobile-2",
+      "label": "with",
       "form": "mobile",
-      "time": "2026-11-05T02:51:09.003Z",
-      "score": 85,
-      "fcpMs": 1472.16986,
-      "lcpMs": 1472.16986,
-      "tbtMs": 566,
-      "cls": 0.00003952341088212718,
+      "timestamp": "2026-11-05T13:48:59.740Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+      "score": 70,
+      "fcpMs": 1199.5857,
+      "lcpMs": 1199.5857,
+      "tbtMs": 2439,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1533598,
+      "warnings": [],
       "settings": {
         "formFactor": "mobile",
         "throttlingMethod": "simulate",
@@ -80,19 +139,22 @@
           "height": 823,
           "deviceScaleFactor": 1.75,
           "disabled": false
-        },
-        "disableStorageReset": true
+        }
       }
     },
     {
-      "id": "redesign-with-mobile-3",
+      "name": "final-with-mobile-3",
+      "label": "with",
       "form": "mobile",
-      "time": "2026-11-05T02:51:24.419Z",
-      "score": 83,
-      "fcpMs": 1262.5661,
-      "lcpMs": 1262.5661,
-      "tbtMs": 693.5,
-      "cls": 0.00003952341088212718,
+      "timestamp": "2026-11-05T13:49:21.576Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+      "score": 67,
+      "fcpMs": 1058.0101,
+      "lcpMs": 2397.4162000000006,
+      "tbtMs": 2812.4999999999995,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1531297,
+      "warnings": [],
       "settings": {
         "formFactor": "mobile",
         "throttlingMethod": "simulate",
@@ -110,19 +172,22 @@
           "height": 823,
           "deviceScaleFactor": 1.75,
           "disabled": false
-        },
-        "disableStorageReset": true
+        }
       }
     },
     {
-      "id": "redesign-with-desktop-1",
+      "name": "final-with-desktop-1",
+      "label": "with",
       "form": "desktop",
-      "time": "2026-11-05T02:52:16.339Z",
-      "score": 100,
-      "fcpMs": 265.14412418823247,
-      "lcpMs": 265.14412418823247,
-      "tbtMs": 0,
-      "cls": 0.02665503613591921,
+      "timestamp": "2026-11-05T13:49:42.278Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+      "score": 93,
+      "fcpMs": 290.1738,
+      "lcpMs": 547.1293000000001,
+      "tbtMs": 201.00000000000023,
+      "cls": 0.0003273305022911012,
+      "transferredBytes": 1465002,
+      "warnings": [],
       "settings": {
         "formFactor": "desktop",
         "throttlingMethod": "simulate",
@@ -140,14 +205,112 @@
           "height": 940,
           "deviceScaleFactor": 1,
           "disabled": false
+        }
+      }
+    },
+    {
+      "name": "final-baseline-mobile-1",
+      "label": "baseline",
+      "form": "mobile",
+      "timestamp": "2026-11-05T13:50:28.245Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+      "score": 65,
+      "fcpMs": 1135.7954,
+      "lcpMs": 2261.91129,
+      "tbtMs": 6636.000000000001,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1348124,
+      "warnings": [],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
         },
-        "disableStorageReset": true
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "final-baseline-mobile-2",
+      "label": "baseline",
+      "form": "mobile",
+      "timestamp": "2026-11-05T13:51:01.582Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+      "score": 66,
+      "fcpMs": 1088.2856000000002,
+      "lcpMs": 2213.0251500000004,
+      "tbtMs": 4751,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1345491,
+      "warnings": [],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    },
+    {
+      "name": "final-baseline-mobile-3",
+      "label": "baseline",
+      "form": "mobile",
+      "timestamp": "2026-11-05T13:51:26.096Z",
+      "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
+      "score": 67,
+      "fcpMs": 1114.2115,
+      "lcpMs": 2168.2115,
+      "tbtMs": 3557.358,
+      "cls": 0.00005636655370774126,
+      "transferredBytes": 1342437,
+      "warnings": [],
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
       }
     }
   ],
-  "reports": {
-    "mobile": "lighthouse-mobile.html",
-    "desktop": "lighthouse-desktop.html",
-    "historicalBaseline": "lighthouse-baseline.html"
+  "representativeReports": {
+    "mobile": "final-with-mobile-1",
+    "baseline": "final-baseline-mobile-2",
+    "desktop": "final-with-desktop-1"
   }
 }

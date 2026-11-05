@@ -26,6 +26,26 @@ O preview usa o tema **Horizon em rascunho**, ID `195588358514`, na loja `desafi
 
 O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem foto, nome, preço e acesso à página do produto. A apresentação usa branco e preto, bordas amarelas discretas e conteúdo limitado a 1.200 px.
 
+## Conferência com o Figma
+
+A mesma seção oferece dois estilos no Theme Editor. **Catálogo** mantém a apresentação comercial da home. **Referência Figma**, padrão ao adicionar a seção, reproduz a composição do PDF e está aplicado à página de vendedores.
+
+[Abrir a apresentação do desafio](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors).
+
+| Elemento | Apresentação Figma em 1.728 px |
+| --- | --- |
+| Grid | Três colunas, duas linhas com os seis registros ativos |
+| Cards | Aproximadamente 503 × 270 px |
+| Intervalo entre cards | 34 px |
+| Cantos e borda | Raio de 32 px; borda de 2 px, `#ffd324` |
+| Fundo da seção / cards | `#f5f5f5` / `#fffcf6`, conferidos no PDF |
+| Título / nome do vendedor | 48 px / 24 px |
+| Avatar / categoria circular | 60 px / 50 px |
+
+Nomes, cargos, categorias e miniaturas continuam vindo dos dados reais. A base de teste tem um produto por vendedor; o mock usa nomes e ícones repetidos. A conferência é de semelhança do layout, não de igualdade entre esses conteúdos. Em telas menores, os cards se reorganizam conforme as colunas configuradas.
+
+[Referência exportada do PDF](docs/evidence/figma-reference.png) · [Seção renderizada](docs/evidence/figma-preview.png) · [Mobile](docs/evidence/figma-mobile.png) · [Medições do layout](docs/evidence/figma-comparison.json)
+
 ## Instalar apenas a seção
 
 1. Copie `sections/ec-vendors-metaobject.liquid` para a pasta `sections` do tema.
@@ -69,11 +89,12 @@ As fotos são ilustrativas; nomes e preços pertencem aos dados fictícios da lo
 | --- | --- |
 | Título e subtítulo | Texto livre; podem ficar vazios |
 | Nível do título | H2 ao incorporar; H1 para a página principal |
+| Estilo dos cards | Referência Figma ou Catálogo |
 | Tipo do metaobjeto | `store_vendor` por padrão |
 | Colunas desktop | 1 a 4 |
 | Colunas mobile | 1 ou 2 |
 | Detalhes dos produtos | Nome, preço e link; opcional, ativado na demonstração |
-| Fotos dos vendedores | Ativadas por padrão; a demonstração usa iniciais, sem alterar os arquivos cadastrados |
+| Fotos dos vendedores | Ativadas por padrão; desativadas, mostram iniciais no catálogo ou o avatar padrão no estilo Figma |
 | Cores | Borda, fundo do card e fundo da seção |
 | Padding do card | 0 a 48 px |
 | Espaçamento vertical | 0 a 160 px |
@@ -121,18 +142,23 @@ Os testes locais usam LiquidJS e adaptam os tags exclusivos da Shopify. Eles com
 
 ## Desempenho e evidências
 
-Os relatórios abaixo registram uma apresentação anterior: três execuções mobile e uma desktop com Lighthouse 13.6.0. O visual comercial atual e as fotos reais não faziam parte dessas medições. Os resultados são históricos e não são apresentados como uma auditoria da versão atual. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
+Medição da versão atual em 05/11/2026, com as fotos reais e Lighthouse 13.6.0. Foram feitas três execuções mobile com vendedores, três com a referência sem cards e uma desktop com vendedores. Todos os relatórios terminaram na vitrine, sem erros de execução ou avisos.
 
-| Métrica | Mobile — mediana de três execuções | Desktop |
-| --- | --- | --- |
-| Performance | 83/100 | 100/100 |
-| FCP | 1,263 s | 0,265 s |
-| LCP | 1,472 s | 0,265 s |
-| TBT | 693,5 ms | 0 ms |
-| CLS | 0,00004 | 0,02666 |
+| Métrica | Mobile com vendedores — mediana | Mobile sem cards — mediana | Desktop com vendedores |
+| --- | --- | --- | --- |
+| Performance | 69/100 | 66/100 | 93/100 |
+| FCP | 1,107 s | 1,114 s | 0,290 s |
+| LCP | 1,200 s | 2,213 s | 0,547 s |
+| TBT | 2.812,5 ms | 4.751 ms | 201 ms |
+| CLS | 0,000056 | 0,000056 | 0,000327 |
+| Transferido | 1,53 MB | 1,35 MB | 1,47 MB |
 
-Os três resultados mobile foram 69, 85 e 83. Houve variação alta de TBT; todos os resultados válidos foram preservados. A seção continua sem JavaScript. São medições de laboratório no preview de desenvolvimento, com os scripts da plataforma presentes, e não métricas de campo de uma loja publicada. O HTML de referência sem cards pertence ao visual anterior; não foi repetido um baseline para este redesign e não é feita comparação direta entre eles.
+As pontuações mobile foram **69, 70 e 67** com vendedores e **65, 66 e 67** na referência. Não apareceu regressão relevante nesta amostra; a pontuação superior não deve ser interpretada como ganho causado pela seção. O TBT permanece alto nos dois cenários. Entre os custos de script identificados estão Web Pixels Manager, Shop JS e Performance Kit, presentes nas duas apresentações. A seção não adiciona JavaScript.
 
-[Resumo das medições](docs/evidence/lighthouse-summary.json) · [Lighthouse mobile](docs/evidence/lighthouse-mobile.html) · [Referência do visual anterior](docs/evidence/lighthouse-baseline.html) · [Lighthouse desktop](docs/evidence/lighthouse-desktop.html)
+A referência manteve o mesmo tema, cabeçalho, rodapé, hero com fotos, CSS e título/subtítulo da seção. Apenas a consulta ao metaobjeto e o bloco dos cards foram removidos temporariamente. O original foi restaurado e os seis vendedores foram conferidos após a coleta.
+
+Antes de cada execução, o cache HTTP, CacheStorage e service workers foram limpos. Os cookies foram preservados para manter a autenticação de visitante; nenhum valor de cookie foi exportado. As execuções mobile usam rede simulada de aproximadamente 1,6 Mbps, RTT de 150 ms e CPU 4× mais lenta. O desktop usa o preset oficial. Os cenários foram executados em sequência e têm variação de TBT; são dados de laboratório em preview, não métricas de campo de uma loja publicada. Não foi medida uma referência desktop.
+
+[Resumo das sete execuções e configurações](docs/evidence/lighthouse-summary.json) · [Lighthouse mobile](docs/evidence/lighthouse-mobile.html) · [Referência sem cards](docs/evidence/lighthouse-baseline.html) · [Lighthouse desktop](docs/evidence/lighthouse-desktop.html)
 
 [Desktop](docs/evidence/desktop.png) · [Mobile](docs/evidence/mobile.png) · [Zero registros](docs/evidence/zero-records.png)

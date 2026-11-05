@@ -1,7 +1,7 @@
 {
   "sections": {
     "intro": { "type": "ec-brand-intro", "settings": { "title": "Roupas e acessórios\npara o dia a dia.", "description": "Veja os produtos disponíveis e conheça o vendedor de cada seleção.", "collection": "produtos", "primary_label": "Ver produtos", "primary_url": "/collections/produtos", "secondary_label": "Conhecer os vendedores", "secondary_url": "/pages/vendedores?view=vendors" } },
-    "vendors": { "type": "ec-vendors-metaobject", "settings": { "heading_tag": "h2", "title": "Nossos vendedores", "subtitle": "Escolha um vendedor e veja os produtos da sua seleção.", "show_product_details": true, "show_vendor_photos": false, "section_padding": 48, "card_padding": 20, "card_background": "#ffffff", "border_color": "#e4ca79", "section_background": "#ffffff" } }
+    "vendors": { "type": "ec-vendors-metaobject", "settings": { "card_style": "catalog", "heading_tag": "h2", "title": "Nossos vendedores", "subtitle": "Escolha um vendedor e veja os produtos da sua seleção.", "show_product_details": true, "show_vendor_photos": false, "section_padding": 48, "card_padding": 20, "card_background": "#ffffff", "border_color": "#e4ca79", "section_background": "#ffffff" } }
   },
   "order": ["intro", "vendors"]
 }

@@ -69,7 +69,7 @@ test('independent settings and section identifiers produce independent styles', 
 test('schema exposes required editor controls with a preset', async () => {
   const source = await readFile(new URL('../sections/ec-vendors-metaobject.liquid', import.meta.url), 'utf8');
   const schema = JSON.parse(source.match(/{%\s*schema\s*%}([\s\S]*?){%\s*endschema\s*%}/)[1]);
-  for (const id of ['title', 'subtitle', 'columns_desktop', 'columns_mobile', 'border_color', 'card_background', 'card_padding']) {
+  for (const id of ['title', 'subtitle', 'card_style', 'columns_desktop', 'columns_mobile', 'border_color', 'card_background', 'card_padding']) {
     assert.ok(schema.settings.some((setting) => setting.id === id), `missing ${id}`);
   }
   assert.ok(schema.presets.length > 0);
@@ -96,9 +96,13 @@ test('optional product details show the title and formatted price without changi
 
 test('vendor photos can be replaced by initials while keeping merchant photo data intact', async () => {
   const entries = [vendor('Marina Lopes', { photo: { value: { url: '/marina.png' } } })];
-  const initials = await render(entries, { show_vendor_photos: false });
+  const initials = await render(entries, { card_style: 'catalog', show_vendor_photos: false });
   assert.ok(!initials.includes('/marina.png'));
   assert.match(initials, /ec-vendors__initial/);
   const photo = await render(entries, { show_vendor_photos: true });
   assert.ok(photo.includes('/marina.png'));
+  const figma = await render(entries, { card_style: 'figma', show_vendor_photos: false });
+  assert.ok(!figma.includes('/marina.png'));
+  assert.ok(!figma.includes('ec-vendors__initial"'));
+  assert.ok(figma.includes('viewBox="0 0 60 60"'));
 });

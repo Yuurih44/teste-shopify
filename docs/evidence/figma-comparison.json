@@ -1,0 +1,89 @@
+{
+  "source": "Desafio Shopify.pdf, artboard 1728 x 1117",
+  "page": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors",
+  "geometry": {
+    "width": 1728,
+    "title": "Desafio Shopify",
+    "cards": [
+      {
+        "x": 75,
+        "y": 315.59,
+        "width": 503.33,
+        "height": 270
+      },
+      {
+        "x": 612.33,
+        "y": 315.59,
+        "width": 503.33,
+        "height": 270
+      },
+      {
+        "x": 1149.66,
+        "y": 315.59,
+        "width": 503.34,
+        "height": 270
+      },
+      {
+        "x": 75,
+        "y": 619.59,
+        "width": 503.33,
+        "height": 270
+      },
+      {
+        "x": 612.33,
+        "y": 619.59,
+        "width": 503.33,
+        "height": 270
+      },
+      {
+        "x": 1149.66,
+        "y": 619.59,
+        "width": 503.34,
+        "height": 270
+      }
+    ],
+    "gap": "34px",
+    "radius": "32px",
+    "borderWidth": "2px",
+    "borderColor": "rgb(255, 211, 36)",
+    "cardBackground": "rgb(255, 252, 246)",
+    "sectionBackground": "rgb(245, 245, 245)",
+    "avatar": {
+      "x": 107,
+      "y": 349.19,
+      "width": 60,
+      "height": 60
+    },
+    "badge": {
+      "x": 496.33,
+      "y": 354.19,
+      "width": 50,
+      "height": 50
+    },
+    "titleFont": "48px",
+    "nameFont": "24px",
+    "productImages": 6
+  },
+  "responsiveChecks": [
+    {
+      "width": 320,
+      "overflow": false,
+      "cards": 6
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "cards": 6
+    },
+    {
+      "width": 800,
+      "overflow": false,
+      "cards": 6
+    }
+  ],
+  "home": {
+    "cards": 6,
+    "detailedProducts": 6
+  },
+  "contentVariation": "Nomes, cargos e miniaturas vêm dos registros cadastrados. Cada vendedor tem um produto vinculado; o mock usa conteúdo repetido."
+}

@@ -39,6 +39,10 @@ test('Horizon integration preserves native commerce templates and uses the vendo
     const home = JSON.parse(await readFile(join(output, 'templates/index.json')));
     assert.equal(home.sections.vendors.type, 'ec-vendors-metaobject');
     assert.equal(home.sections.vendors.settings.heading_tag, 'h2');
+    assert.equal(home.sections.vendors.settings.card_style, 'catalog');
+    const vendorPage = JSON.parse(await readFile(join(output, 'templates/page.vendors.json')));
+    assert.equal(vendorPage.sections.vendors.settings.card_style, 'figma');
+    assert.equal(vendorPage.sections.vendors.settings.show_product_details, false);
     assert.equal(home.sections.intro.type, 'ec-brand-intro');
     assert.deepEqual(home.order, ['intro', 'vendors']);
     const header = JSON.parse(await readFile(join(output, 'sections/header-group.json')));

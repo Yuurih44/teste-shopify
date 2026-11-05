@@ -11,7 +11,9 @@ const sections = [];
 for (const desktop of [1, 2, 3, 4]) {
   for (const mobile of ['1', '2']) {
     for (const details of [false, true]) {
-      sections.push(await render(entries, { columns_desktop: desktop, columns_mobile: mobile, show_product_details: details, card_padding: 48, section_padding: 0 }, `matrix-${desktop}-${mobile}-${details}`));
+      for (const style of ['catalog', 'figma']) {
+        sections.push(await render(entries, { card_style: style, columns_desktop: desktop, columns_mobile: mobile, show_product_details: details, card_padding: 48, section_padding: 0 }, `matrix-${desktop}-${mobile}-${details}-${style}`));
+      }
     }
   }
 }
