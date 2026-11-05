@@ -2,6 +2,8 @@
 
 Seção de vendedores com layout responsivo e configurações pelo Theme Editor.
 
+Decidi mudar um pouco o visual em relação ao Figma porque achei que ficaria mais bonito. Mantive também uma versão próxima do modelo original.
+
 ## Preview
 
 - [Catálogo](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors)
