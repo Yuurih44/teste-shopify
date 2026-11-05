@@ -21,16 +21,29 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
   for (const file of ['layout/theme.liquid', 'templates/product.json', 'templates/cart.json', 'templates/collection.json']) await access(join(base, file));
   await mkdir(output, { recursive: true });
   for (const folder of folders) await cp(join(base, folder), join(output, folder), { recursive: true });
-  for (const file of ['sections/ec-vendors-metaobject.liquid', 'templates/index.json', 'templates/page.vendors.json']) await cp(join(sourcePath, file), join(output, file));
-  await cp(join(sourcePath, 'assets/ec-storefront.css'), join(output, 'assets/ec-storefront.css'));
+  for (const file of ['sections/ec-vendors-metaobject.liquid', 'sections/ec-brand-intro.liquid', 'templates/index.json', 'templates/page.vendors.json', 'assets/ec-storefront.css', 'assets/ec-ponto-mark.svg']) await cp(join(sourcePath, file), join(output, file));
   await cp(join(sourcePath, 'LICENSE-HORIZON.md'), join(output, 'LICENSE.md'));
   const layoutFile = join(output, 'layout/theme.liquid');
   const layout = await readFile(layoutFile, 'utf8');
   if (!layout.includes('</head>')) throw new Error('O layout do Horizon precisa conter </head>.');
-  await writeFile(layoutFile, layout.replace('</head>', "  {{ 'ec-storefront.css' | asset_url | stylesheet_tag }}\n  </head>"));
+  const headAdditions = [];
+  if (!layout.includes("'ec-storefront.css' | asset_url")) headAdditions.push("{{ 'ec-storefront.css' | asset_url | stylesheet_tag }}");
+  if (!layout.includes("'ec-ponto-mark.svg' | asset_url")) headAdditions.push("{% if settings.favicon == blank %}<link rel=\"icon\" type=\"image/svg+xml\" href=\"{{ 'ec-ponto-mark.svg' | asset_url }}\">{% endif %}");
+  await writeFile(layoutFile, headAdditions.length ? layout.replace('</head>', '  ' + headAdditions.join('\n    ') + '\n  </head>') : layout);
   const logoFile = join(output, 'blocks/_header-logo.liquid');
   const logo = await readFile(logoFile, 'utf8');
-  await writeFile(logoFile, logo.replaceAll('text_fallback: shop.name', "text_fallback: 'Desafio'"));
+  const brandAssignment = "{% assign ec_brand_name = settings.ec_brand_name | default: shop.name %}\n";
+  if (!logo.includes('assign ec_brand_name =')) await writeFile(logoFile, brandAssignment + "{% assign ec_brand_name_escaped = ec_brand_name | escape %}\n" + logo.replaceAll('text_fallback: shop.name', 'text_fallback: ec_brand_name_escaped').replaceAll('store_name: shop.name', 'store_name: ec_brand_name'));
+  for (const file of ['blocks/footer-copyright.liquid', 'snippets/meta-tags.liquid']) {
+    const source = await readFile(join(output, file), 'utf8');
+    if (!source.includes('assign ec_brand_name =')) {
+      let brandedSource = source.replaceAll('shop.name', 'ec_brand_name').replaceAll('{{ ec_brand_name }}', '{{ ec_brand_name | escape }}').replaceAll('{{ ec_brand_name | link_to:', '{{ ec_brand_name | escape | link_to:');
+      if (file === 'snippets/meta-tags.liquid') brandedSource = "{% liquid\n  assign ec_page_title = page_title\n  if request.page_type == 'index'\n    assign ec_page_title = ec_brand_name\n  endif\n%}\n" + brandedSource.replaceAll('page_title', 'ec_page_title').replaceAll('{{ ec_page_title }}', '{{ ec_page_title | escape }}');
+      await writeFile(join(output, file), brandAssignment + brandedSource);
+    }
+  }
+  if (!schema.some(group => group.settings?.some(setting => setting.id === 'ec_brand_name'))) schema.push({ name: 'Identidade da loja', settings: [{ type: 'text', id: 'ec_brand_name', label: 'Nome da marca', default: 'Ponto' }] });
+  await writeJson(join(output, 'config/settings_schema.json'), schema);
 
   const header = await readJson(join(output, 'sections/header-group.json'));
   for (const section of Object.values(header.sections)) {
@@ -39,23 +52,25 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
       for (const block of Object.values(section.blocks || {})) if (block.type === '_header-menu') block.settings.menu = menu;
     }
     if (section.type === 'header-announcements') {
-      section.settings = { ...section.settings, background_color: '#ffcf00', divider_width: 0, 'padding-block-start': 9, 'padding-block-end': 9 };
-      for (const block of Object.values(section.blocks || {})) if (block.type === '_announcement') block.settings.text = 'Produtos escolhidos por quem entende.';
+      section.settings = { ...section.settings, background_color: '#f5ce46', divider_width: 0, 'padding-block-start': 9, 'padding-block-end': 9 };
+      for (const block of Object.values(section.blocks || {})) if (block.type === '_announcement') block.settings.text = 'Ponto. Boas escolhas têm gente por trás.';
     }
   }
   await writeJson(join(output, 'sections/header-group.json'), header);
 
   const footer = await readJson(join(output, 'sections/footer-group.json'));
   for (const section of Object.values(footer.sections)) {
+    section.settings = { ...section.settings, background_color: '#25473b' };
     for (const [id, block] of Object.entries(section.blocks || {})) {
+      if (block.type === 'footer-copyright') block.settings = { ...block.settings, show_powered_by: false };
       if (block.type === 'email-signup') section.blocks[id] = { type: 'menu', settings: { menu, heading: 'Navegação' }, blocks: {} };
       if (block.type === 'social-links') {
         delete section.blocks[id];
         section.block_order = (section.block_order || []).filter((key) => key !== id);
       }
       for (const child of Object.values(block.blocks || {})) {
-        if (child.type === 'text' && child.settings.text?.includes('Join our email list')) child.settings.text = '<h2>Uma boa escolha faz a diferença.</h2>';
-        if (child.type === 'text' && child.settings.text?.includes('Get exclusive deals')) child.settings.text = '<p>Conheça nossos vendedores e descubra a seleção de cada um. Do seu jeito, para o seu dia a dia.</p>';
+        if (child.type === 'text' && child.settings.text?.includes('Join our email list')) child.settings.text = '<h2>Seu próximo achado\ncomeça na Ponto.</h2>';
+        if (child.type === 'text' && child.settings.text?.includes('Get exclusive deals')) child.settings.text = '<p>Produtos para o dia a dia, escolhidos por quem gosta do que faz. Conheça as pessoas por trás de cada seleção.</p>';
       }
     }
   }
@@ -67,6 +82,12 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
   await writeJson(join(output, 'templates/cart.json'), cart);
   const settings = await readJson(join(output, 'config/settings_data.json'));
   settings.current.page_width = 'wide';
+  settings.current.ec_brand_name = 'Ponto';
+  settings.current.color_palette = { ...settings.current.color_palette, background: '#fbfaf6', foreground: '#25473b', color1: '#526459', color2: '#dfdfd2' };
+  settings.current.type_body_font = 'work_sans_n4';
+  settings.current.type_subheading_font = 'work_sans_n5';
+  settings.current.type_heading_font = 'work_sans_n7';
+  settings.current.type_accent_font = 'work_sans_n7';
   await writeJson(join(output, 'config/settings_data.json'), settings);
   return output;
 }

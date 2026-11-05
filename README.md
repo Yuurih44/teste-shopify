@@ -1,6 +1,20 @@
 # Desafio Shopify — Vendedores
 
-Seção Liquid que renderiza automaticamente os vendedores ativos do metaobjeto `store_vendor`, integrada a uma loja Horizon com cabeçalho, navegação, catálogo, páginas de produto, carrinho e rodapé. O grid segue o mock do desafio e pode ser reutilizado em outros temas e templates.
+Seção Liquid que renderiza automaticamente os vendedores ativos do metaobjeto `store_vendor`, integrada à loja de demonstração **Ponto**, construída sobre o Horizon. Inclui abertura de marca, cabeçalho, navegação, catálogo, páginas de produto, carrinho e rodapé. O grid mantém as referências do mock e pode ser reutilizado em outros temas e templates.
+
+## Identidade Ponto
+
+**Seu estilo. Seu ponto.** A marca apresenta os vendedores como curadores de produtos para o dia a dia. O logo usa um P com um ponto separado; a abertura compõe três produtos reais da coleção. A identidade segue pelo cabeçalho, favicon, títulos das páginas, catálogo e rodapé.
+
+| Elemento | Definição |
+| --- | --- |
+| Verde principal | `#25473b` |
+| Amarelo de destaque | `#f5ce46` |
+| Fundo claro | `#fbfaf6` |
+| Fundo dos vendedores | `#f0f1e9` |
+| Tipografia | Work Sans, carregada pelo sistema de fontes do tema |
+
+O nome da marca pode ser alterado em **Configurações do tema → Identidade da loja**. A seção **Ponto · Apresentação** permite editar título, descrição, coleção e links. Os textos da faixa e do rodapé também permanecem editáveis no Theme Editor.
 
 ## Preview
 
@@ -10,7 +24,7 @@ Senha de visitante: `awwhop`.
 
 O preview usa o tema **Horizon em rascunho**, ID `195588358514`, na loja `desafio-teste.myshopify.com`. O tema publicado foi preservado. O link compartilhado foi gerado em 04/11/2026 e tem validade limitada pela Shopify; para renovar, abra o preview do Horizon e use **Copy link** na barra de pré-visualização.
 
-O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem imagem, nome, preço e acesso à página do produto. A apresentação usa uma faixa amarela, conteúdo limitado a 1.200 px e espaçamentos compactos.
+O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem imagem, nome, preço e acesso à página do produto. A apresentação usa verde, amarelo e conteúdo limitado a 1.200 px.
 
 ## Instalar apenas a seção
 
@@ -76,7 +90,7 @@ npm run check
 shopify theme push --store sua-loja.myshopify.com --theme ID_DO_RASCUNHO --path dist/horizon --nodelete
 ```
 
-O resultado fica em `dist/horizon`. O script preserva os componentes nativos de comércio, substitui a home pela seção de vendedores, configura o cabeçalho e o rodapé e direciona as sugestões do carrinho à coleção `produtos`. Na cópia montada, adiciona o stylesheet `assets/ec-storefront.css` ao layout e usa “Desafio” como fallback textual do logo. O arquivo de estilo ajusta a largura, a tipografia e os elementos do tema ao visual da seção. Os arquivos do tema original não são alterados.
+O resultado fica em `dist/horizon`. O script preserva os componentes nativos de comércio, monta a home com apresentação e vendedores, configura o cabeçalho e o rodapé e direciona as sugestões do carrinho à coleção `produtos`. Na cópia montada, adiciona os assets da marca ao layout e usa o nome configurável no logo, copyright e metadados. Os arquivos do tema original não são alterados. A montagem pode ser repetida sobre uma cópia já integrada sem duplicar o stylesheet ou os controles da marca.
 
 Prepare os recursos no Admin:
 
@@ -90,7 +104,7 @@ No Windows, `npm run package` gera `dist/desafio-vendedores.zip` a partir do Hor
 
 ## Validação
 
-- 13 testes automatizados: renderização Liquid com cinco vendedores, zero registros, definição ausente, campos opcionais, escape de conteúdo, links, instâncias independentes, schema, nível do título, detalhes e preço dos produtos, preservação dos templates nativos e caminhos do ZIP.
+- 15 testes automatizados: renderização Liquid com cinco vendedores, zero registros, definição ausente, campos opcionais, escape de conteúdo, links, instâncias independentes, schema, nível do título, detalhes e preço dos produtos, apresentação sem coleção, preservação dos templates nativos, montagem repetida e caminhos do ZIP.
 - Theme Check da integração: zero erros. Os sete avisos também aparecem no Horizon original, sem novos avisos da seção.
 - Seis vendedores ativos conferidos na vitrine; entradas em rascunho não renderizadas.
 - Título, subtítulo, colunas, cores e padding verificados no Theme Editor.
@@ -102,7 +116,7 @@ Os testes locais usam LiquidJS e adaptam os tags exclusivos da Shopify. Eles com
 
 ## Desempenho e evidências
 
-Lighthouse 13.6.0 no preview real do redesign: três execuções mobile e uma desktop. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
+Os relatórios abaixo registram o redesign anterior à identidade Ponto: três execuções mobile e uma desktop com Lighthouse 13.6.0. A abertura de marca e as novas fontes não faziam parte dessas medições. Os resultados são históricos e não são apresentados como uma auditoria da versão atual. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
 
 | Métrica | Mobile — mediana de três execuções | Desktop |
 | --- | --- | --- |

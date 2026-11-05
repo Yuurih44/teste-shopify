@@ -1,0 +1,42 @@
+{%- capture product_cards -%}
+  {%- for featured_product in collections[section.settings.collection].products limit: 3 -%}
+    {%- if featured_product.featured_image != blank and featured_product.url != blank -%}
+      <a class="ec-brand-intro__product ec-brand-intro__product--{{ forloop.index }}" href="{{ featured_product.url | escape }}" aria-label="{{ featured_product.title | escape }}">
+        {{ featured_product.featured_image | image_url: width: 360 | image_tag: widths: '180, 360', sizes: '(max-width: 749px) 130px, 180px', loading: 'eager', alt: '' }}
+        <span class="ec-brand-intro__product-name">{{ featured_product.title | escape }}</span>
+        <span class="ec-brand-intro__product-price">{{ featured_product.price | money }}</span>
+      </a>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+<section class="ec-brand-intro{% if product_cards == blank %} ec-brand-intro--text-only{% endif %}" aria-labelledby="ec-brand-intro-{{ section.id }}">
+  <div class="ec-brand-intro__inner">
+    <div class="ec-brand-intro__copy">
+      <h1 id="ec-brand-intro-{{ section.id }}">{{ section.settings.title | escape }}</h1>
+      {%- if section.settings.description != blank -%}<p>{{ section.settings.description | escape }}</p>{%- endif -%}
+      <div class="ec-brand-intro__actions">
+        {%- if section.settings.primary_url != blank and section.settings.primary_label != blank -%}<a class="ec-brand-intro__primary" href="{{ section.settings.primary_url | escape }}">{{ section.settings.primary_label | escape }}</a>{%- endif -%}
+        {%- if section.settings.secondary_url != blank and section.settings.secondary_label != blank -%}<a class="ec-brand-intro__secondary" href="{{ section.settings.secondary_url | escape }}">{{ section.settings.secondary_label | escape }}</a>{%- endif -%}
+      </div>
+    </div>
+    {%- if product_cards != blank -%}<div class="ec-brand-intro__selection" aria-label="Uma seleção da nossa loja">{{ product_cards }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ponto · Apresentação",
+  "tag": "div",
+  "settings": [
+    { "type": "textarea", "id": "title", "label": "Título", "default": "Seu estilo.\nSeu ponto." },
+    { "type": "textarea", "id": "description", "label": "Descrição", "default": "Achados para o seu dia. Uma seleção feita por pessoas que entendem de cada detalhe." },
+    { "type": "collection", "id": "collection", "label": "Coleção de produtos em destaque" },
+    { "type": "text", "id": "primary_label", "label": "Texto do botão principal", "default": "Conhecer os vendedores" },
+    { "type": "url", "id": "primary_url", "label": "Link do botão principal" },
+    { "type": "text", "id": "secondary_label", "label": "Texto do link secundário", "default": "Explorar produtos" },
+    { "type": "url", "id": "secondary_url", "label": "Link secundário" }
+  ],
+  "presets": [{ "name": "Ponto · Apresentação" }]
+}
+{% endschema %}
