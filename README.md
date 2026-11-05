@@ -22,19 +22,26 @@ O nome da marca pode ser alterado em **Configurações do tema → Identidade da
 
 Senha de visitante: `awwhop`.
 
+| Modelo | Preview |
+| --- | --- |
+| Referência Figma — apresentação do desafio | [Abrir versão próxima do mock](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors-figma) |
+| Catálogo — adaptação comercial | [Abrir versão adaptada](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors) |
+
+Para avaliar a fidelidade ao desafio, use a apresentação **Referência Figma**. O catálogo é uma alternativa visual adicional. Ambos renderizam os mesmos metaobjects ativos através de `sections/ec-vendors-metaobject.liquid`; a diferença está nas configurações dos templates JSON, sem duplicação dos dados ou da lógica de vendedores.
+
 O preview usa o tema **Horizon em rascunho**, ID `195588358514`, na loja `desafio-teste.myshopify.com`. O tema publicado foi preservado. O link compartilhado foi gerado em 04/11/2026 e tem validade limitada pela Shopify; para renovar, abra o preview do Horizon e use **Copy link** na barra de pré-visualização.
 
 O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem foto, nome, preço e acesso à página do produto. A apresentação usa branco e preto, bordas amarelas discretas e conteúdo limitado a 1.200 px.
 
 ## Adaptação visual do Figma
 
-A entrega usa o estilo **Catálogo** na home e na página de vendedores. A adaptação visual foi intencional:
+A entrega inclui os dois estilos. **Referência Figma** está no template `page.vendors-figma.json`. **Catálogo** permanece na home e no template `page.vendors.json`. A adaptação visual do catálogo foi intencional:
 
 > Mantivemos a estrutura de vendedores em grid e todas as configurações solicitadas. Fizemos ajustes na apresentação dos produtos, tipografia e espaçamentos para melhorar a leitura e a navegação, preservando o carregamento dinâmico via metaobjects.
 
-O estilo **Referência Figma** permanece disponível no Theme Editor para consultar a composição original com produtos em miniatura. A tabela e as capturas abaixo registram essa conferência; a apresentação escolhida para o preview é a de catálogo.
+Os dois estilos também podem ser escolhidos no Theme Editor. A tabela e as capturas abaixo registram a conferência da apresentação Figma, com os produtos em miniatura.
 
-[Abrir a apresentação do desafio](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors).
+[Abrir a apresentação do desafio](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors-figma).
 
 | Elemento | Apresentação Figma em 1.728 px |
 | --- | --- |

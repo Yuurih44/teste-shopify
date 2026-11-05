@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "vendors": { "type": "ec-vendors-metaobject", "settings": { "card_style": "figma", "heading_tag": "h1", "title": "Desafio Shopify", "subtitle": "Seção para mostrar vendedores disponíveis de uma loja", "show_product_details": false, "show_vendor_photos": false, "section_padding": 128, "card_padding": 30, "card_background": "#fffcf6", "border_color": "#ffd324", "section_background": "#f5f5f5" } }
+  },
+  "order": ["vendors"]
+}

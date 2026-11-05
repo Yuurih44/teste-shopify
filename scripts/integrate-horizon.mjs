@@ -21,7 +21,7 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
   for (const file of ['layout/theme.liquid', 'templates/product.json', 'templates/cart.json', 'templates/collection.json']) await access(join(base, file));
   await mkdir(output, { recursive: true });
   for (const folder of folders) await cp(join(base, folder), join(output, folder), { recursive: true });
-  for (const file of ['sections/ec-vendors-metaobject.liquid', 'sections/ec-brand-intro.liquid', 'templates/index.json', 'templates/page.vendors.json', 'assets/ec-storefront.css', 'assets/ec-ponto-mark.svg']) await cp(join(sourcePath, file), join(output, file));
+  for (const file of ['sections/ec-vendors-metaobject.liquid', 'sections/ec-brand-intro.liquid', 'templates/index.json', 'templates/page.vendors.json', 'templates/page.vendors-figma.json', 'assets/ec-storefront.css', 'assets/ec-ponto-mark.svg']) await cp(join(sourcePath, file), join(output, file));
   await cp(join(sourcePath, 'LICENSE-HORIZON.md'), join(output, 'LICENSE.md'));
   const layoutFile = join(output, 'layout/theme.liquid');
   const layout = await readFile(layoutFile, 'utf8');
