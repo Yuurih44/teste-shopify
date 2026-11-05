@@ -26,9 +26,13 @@ O preview usa o tema **Horizon em rascunho**, ID `195588358514`, na loja `desafi
 
 O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem foto, nome, preço e acesso à página do produto. A apresentação usa branco e preto, bordas amarelas discretas e conteúdo limitado a 1.200 px.
 
-## Conferência com o Figma
+## Adaptação visual do Figma
 
-A mesma seção oferece dois estilos no Theme Editor. **Catálogo** mantém a apresentação comercial da home. **Referência Figma**, padrão ao adicionar a seção, reproduz a composição do PDF e está aplicado à página de vendedores.
+A entrega usa o estilo **Catálogo** na home e na página de vendedores. A adaptação visual foi intencional:
+
+> Mantivemos a estrutura de vendedores em grid e todas as configurações solicitadas. Fizemos ajustes na apresentação dos produtos, tipografia e espaçamentos para melhorar a leitura e a navegação, preservando o carregamento dinâmico via metaobjects.
+
+O estilo **Referência Figma** permanece disponível no Theme Editor para consultar a composição original com produtos em miniatura. A tabela e as capturas abaixo registram essa conferência; a apresentação escolhida para o preview é a de catálogo.
 
 [Abrir a apresentação do desafio](https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/pages/vendedores?view=vendors).
 
@@ -44,7 +48,7 @@ A mesma seção oferece dois estilos no Theme Editor. **Catálogo** mantém a ap
 
 Nomes, cargos, categorias e miniaturas continuam vindo dos dados reais. A base de teste tem um produto por vendedor; o mock usa nomes e ícones repetidos. A conferência é de semelhança do layout, não de igualdade entre esses conteúdos. Em telas menores, os cards se reorganizam conforme as colunas configuradas.
 
-[Referência exportada do PDF](docs/evidence/figma-reference.png) · [Seção renderizada](docs/evidence/figma-preview.png) · [Mobile](docs/evidence/figma-mobile.png) · [Medições do layout](docs/evidence/figma-comparison.json)
+[Referência exportada do PDF](docs/evidence/figma-reference.png) · [Captura comparativa no estilo Figma](docs/evidence/figma-preview.png) · [Comparação mobile](docs/evidence/figma-mobile.png) · [Medições do layout de referência](docs/evidence/figma-comparison.json)
 
 ## Instalar apenas a seção
 
