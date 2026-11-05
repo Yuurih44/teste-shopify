@@ -1,8 +1,8 @@
 {%- capture product_cards -%}
   {%- for featured_product in collections[section.settings.collection].products limit: 3 -%}
     {%- if featured_product.featured_image != blank and featured_product.url != blank -%}
-      <a class="ec-brand-intro__product ec-brand-intro__product--{{ forloop.index }}" href="{{ featured_product.url | escape }}" aria-label="{{ featured_product.title | escape }}">
-        {{ featured_product.featured_image | image_url: width: 360 | image_tag: widths: '180, 360', sizes: '(max-width: 749px) 130px, 180px', loading: 'eager', alt: '' }}
+      <a class="ec-brand-intro__product" href="{{ featured_product.url | escape }}" aria-label="{{ featured_product.title | escape }}">
+        {{ featured_product.featured_image | image_url: width: 640 | image_tag: widths: '320, 640', sizes: '(max-width: 749px) 30vw, 240px', loading: 'eager', alt: '' }}
         <span class="ec-brand-intro__product-name">{{ featured_product.title | escape }}</span>
         <span class="ec-brand-intro__product-price">{{ featured_product.price | money }}</span>
       </a>
@@ -29,12 +29,12 @@
   "name": "Ponto · Apresentação",
   "tag": "div",
   "settings": [
-    { "type": "textarea", "id": "title", "label": "Título", "default": "Seu estilo.\nSeu ponto." },
-    { "type": "textarea", "id": "description", "label": "Descrição", "default": "Achados para o seu dia. Uma seleção feita por pessoas que entendem de cada detalhe." },
+    { "type": "textarea", "id": "title", "label": "Título", "default": "Roupas e acessórios\npara o dia a dia." },
+    { "type": "textarea", "id": "description", "label": "Descrição", "default": "Veja os produtos disponíveis e conheça o vendedor de cada seleção." },
     { "type": "collection", "id": "collection", "label": "Coleção de produtos em destaque" },
-    { "type": "text", "id": "primary_label", "label": "Texto do botão principal", "default": "Conhecer os vendedores" },
+    { "type": "text", "id": "primary_label", "label": "Texto do botão principal", "default": "Ver produtos" },
     { "type": "url", "id": "primary_url", "label": "Link do botão principal" },
-    { "type": "text", "id": "secondary_label", "label": "Texto do link secundário", "default": "Explorar produtos" },
+    { "type": "text", "id": "secondary_label", "label": "Texto do link secundário", "default": "Conhecer os vendedores" },
     { "type": "url", "id": "secondary_url", "label": "Link secundário" }
   ],
   "presets": [{ "name": "Ponto · Apresentação" }]

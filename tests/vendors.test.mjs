@@ -93,3 +93,12 @@ test('optional product details show the title and formatted price without changi
   const compact = await render(entries, { show_product_details: false });
   assert.ok(!compact.includes('Ver produto'));
 });
+
+test('vendor photos can be replaced by initials while keeping merchant photo data intact', async () => {
+  const entries = [vendor('Marina Lopes', { photo: { value: { url: '/marina.png' } } })];
+  const initials = await render(entries, { show_vendor_photos: false });
+  assert.ok(!initials.includes('/marina.png'));
+  assert.match(initials, /ec-vendors__initial/);
+  const photo = await render(entries, { show_vendor_photos: true });
+  assert.ok(photo.includes('/marina.png'));
+});

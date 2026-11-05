@@ -1,6 +1,6 @@
 {
   "sections": {
-    "vendors": { "type": "ec-vendors-metaobject", "settings": { "heading_tag": "h1", "title": "Gente que entende do seu próximo achado.", "subtitle": "Cada vendedor da Ponto tem um olhar. Encontre a seleção que combina com você.", "show_product_details": true, "section_padding": 64, "card_padding": 24, "card_background": "#fbfaf6", "border_color": "#d6b848", "section_background": "#f0f1e9" } }
+    "vendors": { "type": "ec-vendors-metaobject", "settings": { "heading_tag": "h1", "title": "Vendedores", "subtitle": "Conheça os vendedores da loja e veja os produtos de cada um.", "show_product_details": true, "show_vendor_photos": false, "section_padding": 48, "card_padding": 20, "card_background": "#ffffff", "border_color": "#e4ca79", "section_background": "#ffffff" } }
   },
   "order": ["vendors"]
 }

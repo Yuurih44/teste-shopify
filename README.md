@@ -4,17 +4,17 @@ Seção Liquid que renderiza automaticamente os vendedores ativos do metaobjeto 
 
 ## Identidade Ponto
 
-**Seu estilo. Seu ponto.** A marca apresenta os vendedores como curadores de produtos para o dia a dia. O logo usa um P com um ponto separado; a abertura compõe três produtos reais da coleção. A identidade segue pelo cabeçalho, favicon, títulos das páginas, catálogo e rodapé.
+A apresentação comercial segue a referência da [Insider](https://www.insiderstore.com.br/): navegação direta, fotos dos produtos, preços legíveis e botões de acesso às páginas. A marca própria Ponto permanece no cabeçalho, favicon, títulos e rodapé. A abertura exibe três produtos reais da coleção, sem elementos inclinados ou sobrepostos.
 
 | Elemento | Definição |
 | --- | --- |
-| Verde principal | `#25473b` |
-| Amarelo de destaque | `#f5ce46` |
-| Fundo claro | `#fbfaf6` |
-| Fundo dos vendedores | `#f0f1e9` |
-| Tipografia | Work Sans, carregada pelo sistema de fontes do tema |
+| Texto e botões | `#171717` |
+| Amarelo das bordas | `#e4ca79` |
+| Fundo da loja | `#ffffff` |
+| Fundo da apresentação | `#f3f3f3` |
+| Tipografia | Inter, carregada pelo sistema de fontes do tema |
 
-O nome da marca pode ser alterado em **Configurações do tema → Identidade da loja**. A seção **Ponto · Apresentação** permite editar título, descrição, coleção e links. Os textos da faixa e do rodapé também permanecem editáveis no Theme Editor.
+O nome da marca pode ser alterado em **Configurações do tema → Identidade da loja**. A seção **Ponto · Apresentação** permite editar título, descrição, coleção e links. Os textos do rodapé permanecem editáveis no Theme Editor. A faixa de anúncios está desativada.
 
 ## Preview
 
@@ -24,7 +24,7 @@ Senha de visitante: `awwhop`.
 
 O preview usa o tema **Horizon em rascunho**, ID `195588358514`, na loja `desafio-teste.myshopify.com`. O tema publicado foi preservado. O link compartilhado foi gerado em 04/11/2026 e tem validade limitada pela Shopify; para renovar, abra o preview do Horizon e use **Copy link** na barra de pré-visualização.
 
-O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem imagem, nome, preço e acesso à página do produto. A apresentação usa verde, amarelo e conteúdo limitado a 1.200 px.
+O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem foto, nome, preço e acesso à página do produto. A apresentação usa branco e preto, bordas amarelas discretas e conteúdo limitado a 1.200 px.
 
 ## Instalar apenas a seção
 
@@ -59,6 +59,10 @@ Sem foto, aparece um avatar padrão. Campos opcionais vazios não geram imagens 
 | Beatriz Nogueira | Óculos de sol |
 | Gustavo Almeida | Boné aba curva |
 
+O arquivo [data/products.csv](data/products.csv) permite cadastrar os seis produtos em uma loja de desenvolvimento. Importe-o em **Produtos → Importar**, antes de vincular os produtos às entradas do metaobjeto. Ele contém os nomes, vendedores, preços e URLs das fotos. Os produtos da demonstração foram atualizados no catálogo da Shopify, mantendo seus IDs e referências.
+
+As fotos são ilustrativas; nomes e preços pertencem aos dados fictícios da loja de desenvolvimento. Fontes: [camiseta](https://images.unsplash.com/photo-1521572163474-6864f9cf17ab), [tênis](https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb), [mochila](https://images.unsplash.com/photo-1553062407-98eeb64c6a62), [relógio](https://images.unsplash.com/photo-1523275335684-37898b6baf30), [óculos](https://images.unsplash.com/photo-1572635196237-14b3f281503f) e [boné](https://images.unsplash.com/photo-1588850561407-ed78c282e89b). Uso conforme a [licença Unsplash](https://unsplash.com/license).
+
 ## Configurações da seção
 
 | Configuração | Opções |
@@ -69,6 +73,7 @@ Sem foto, aparece um avatar padrão. Campos opcionais vazios não geram imagens 
 | Colunas desktop | 1 a 4 |
 | Colunas mobile | 1 ou 2 |
 | Detalhes dos produtos | Nome, preço e link; opcional, ativado na demonstração |
+| Fotos dos vendedores | Ativadas por padrão; a demonstração usa iniciais, sem alterar os arquivos cadastrados |
 | Cores | Borda, fundo do card e fundo da seção |
 | Padding do card | 0 a 48 px |
 | Espaçamento vertical | 0 a 160 px |
@@ -104,7 +109,7 @@ No Windows, `npm run package` gera `dist/desafio-vendedores.zip` a partir do Hor
 
 ## Validação
 
-- 15 testes automatizados: renderização Liquid com cinco vendedores, zero registros, definição ausente, campos opcionais, escape de conteúdo, links, instâncias independentes, schema, nível do título, detalhes e preço dos produtos, apresentação sem coleção, preservação dos templates nativos, montagem repetida e caminhos do ZIP.
+- 16 testes automatizados: renderização Liquid com cinco vendedores, zero registros, definição ausente, campos opcionais, escape de conteúdo, links, instâncias independentes, schema, nível do título, detalhes e preço dos produtos, controle de fotos/iniciais, apresentação sem coleção, preservação dos templates nativos, montagem repetida e caminhos do ZIP.
 - Theme Check da integração: zero erros. Os sete avisos também aparecem no Horizon original, sem novos avisos da seção.
 - Seis vendedores ativos conferidos na vitrine; entradas em rascunho não renderizadas.
 - Título, subtítulo, colunas, cores e padding verificados no Theme Editor.
@@ -116,7 +121,7 @@ Os testes locais usam LiquidJS e adaptam os tags exclusivos da Shopify. Eles com
 
 ## Desempenho e evidências
 
-Os relatórios abaixo registram o redesign anterior à identidade Ponto: três execuções mobile e uma desktop com Lighthouse 13.6.0. A abertura de marca e as novas fontes não faziam parte dessas medições. Os resultados são históricos e não são apresentados como uma auditoria da versão atual. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
+Os relatórios abaixo registram uma apresentação anterior: três execuções mobile e uma desktop com Lighthouse 13.6.0. O visual comercial atual e as fotos reais não faziam parte dessas medições. Os resultados são históricos e não são apresentados como uma auditoria da versão atual. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
 
 | Métrica | Mobile — mediana de três execuções | Desktop |
 | --- | --- | --- |

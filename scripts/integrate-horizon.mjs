@@ -52,15 +52,14 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
       for (const block of Object.values(section.blocks || {})) if (block.type === '_header-menu') block.settings.menu = menu;
     }
     if (section.type === 'header-announcements') {
-      section.settings = { ...section.settings, background_color: '#f5ce46', divider_width: 0, 'padding-block-start': 9, 'padding-block-end': 9 };
-      for (const block of Object.values(section.blocks || {})) if (block.type === '_announcement') block.settings.text = 'Ponto. Boas escolhas têm gente por trás.';
+      section.disabled = true;
     }
   }
   await writeJson(join(output, 'sections/header-group.json'), header);
 
   const footer = await readJson(join(output, 'sections/footer-group.json'));
   for (const section of Object.values(footer.sections)) {
-    section.settings = { ...section.settings, background_color: '#25473b' };
+    section.settings = { ...section.settings, background_color: '#fafafa' };
     for (const [id, block] of Object.entries(section.blocks || {})) {
       if (block.type === 'footer-copyright') block.settings = { ...block.settings, show_powered_by: false };
       if (block.type === 'email-signup') section.blocks[id] = { type: 'menu', settings: { menu, heading: 'Navegação' }, blocks: {} };
@@ -69,8 +68,8 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
         section.block_order = (section.block_order || []).filter((key) => key !== id);
       }
       for (const child of Object.values(block.blocks || {})) {
-        if (child.type === 'text' && child.settings.text?.includes('Join our email list')) child.settings.text = '<h2>Seu próximo achado\ncomeça na Ponto.</h2>';
-        if (child.type === 'text' && child.settings.text?.includes('Get exclusive deals')) child.settings.text = '<p>Produtos para o dia a dia, escolhidos por quem gosta do que faz. Conheça as pessoas por trás de cada seleção.</p>';
+        if (child.type === 'text' && ['Join our email list', 'Seu próximo achado', 'Uma boa escolha faz a diferença'].some(text => child.settings.text?.includes(text))) child.settings.text = '<h2>PONTO</h2>';
+        if (child.type === 'text' && ['Get exclusive deals', 'Produtos para o dia a dia, escolhidos', 'Conheça nossos vendedores e descubra'].some(text => child.settings.text?.includes(text))) child.settings.text = '<p>Roupas, calçados e acessórios. Conheça os vendedores e os produtos disponíveis na loja.</p>';
       }
     }
   }
@@ -83,11 +82,11 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
   const settings = await readJson(join(output, 'config/settings_data.json'));
   settings.current.page_width = 'wide';
   settings.current.ec_brand_name = 'Ponto';
-  settings.current.color_palette = { ...settings.current.color_palette, background: '#fbfaf6', foreground: '#25473b', color1: '#526459', color2: '#dfdfd2' };
-  settings.current.type_body_font = 'work_sans_n4';
-  settings.current.type_subheading_font = 'work_sans_n5';
-  settings.current.type_heading_font = 'work_sans_n7';
-  settings.current.type_accent_font = 'work_sans_n7';
+  settings.current.color_palette = { ...settings.current.color_palette, background: '#ffffff', foreground: '#171717', color1: '#555555', color2: '#e4e4e4' };
+  settings.current.type_body_font = 'inter_n4';
+  settings.current.type_subheading_font = 'inter_n5';
+  settings.current.type_heading_font = 'inter_n7';
+  settings.current.type_accent_font = 'inter_n7';
   await writeJson(join(output, 'config/settings_data.json'), settings);
   return output;
 }
