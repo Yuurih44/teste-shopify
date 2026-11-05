@@ -81,3 +81,15 @@ test('uses h2 when embedded and allows h1 for a standalone page', async () => {
   assert.match(embedded, /<h2 class="ec-vendors__title"/);
   assert.match(standalone, /<h1 class="ec-vendors__title"/);
 });
+
+test('optional product details show the title and formatted price without changing the product link', async () => {
+  const entries = [vendor('Ana', { products: { value: [{ title: 'Camiseta & algodão', price: 8990, url: '/products/camiseta' }] } })];
+  const html = await render(entries, { show_product_details: true });
+  assert.match(html, /ec-vendors__products--detailed/);
+  assert.match(html, /Camiseta &amp; algodão/);
+  assert.match(html, /89,90/);
+  assert.match(html, /Ver produto/);
+  assert.match(html, /href="\/products\/camiseta"/);
+  const compact = await render(entries, { show_product_details: false });
+  assert.ok(!compact.includes('Ver produto'));
+});

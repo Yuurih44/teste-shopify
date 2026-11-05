@@ -1,192 +1,153 @@
 {
   "lighthouseVersion": "13.6.0",
   "url": "https://ls0wk1ls7do9exys-100906303858.shopifypreview.com/",
-  "theme": {
-    "name": "Horizon",
-    "id": "195588358514"
+  "version": "Redesign com produtos detalhados, faixa amarela e identidade Desafio",
+  "mobileMedian": {
+    "score": 83,
+    "fcpMs": 1262.5661,
+    "lcpMs": 1472.16986,
+    "tbtMs": 693.5,
+    "cls": 0.00003952341088212718
   },
   "method": {
-    "baseline": "Mesmo tema Horizon, CSS, h1, titulo, subtitulo, schema, menu e rodape; bloco dos vendedores e consulta ao metaobjeto temporariamente removidos. Original restaurado pelo responsavel apos coleta.",
-    "mobileRunsPerScenario": 3,
+    "mobileRuns": 3,
     "desktopRuns": 1,
-    "visitorAuthentication": "Visitante autenticado antes das auditorias. Nenhum valor de cookie exportado.",
-    "limits": [
-      "Medicoes de laboratorio em preview, nao dados de campo.",
-      "Scripts Shopify e toolbar do preview presentes em ambos os cenarios.",
-      "Armazenamento preservado para manter autenticacao; cache e bytes variam entre execucoes.",
-      "Cenarios executados em sequencia, sem intercalacao. Variacao observada impede atribuir causalidade a pequenas diferencas.",
-      "Uma execucao desktop, sem baseline desktop."
+    "visitorAuthentication": "Autenticada antes da coleta; nenhum cookie exportado.",
+    "notes": [
+      "One initial trial overlapped verification-page navigation and was excluded; run1 was repeated without concurrent navigation.",
+      "Large TBT variation persists in the repeated valid run and is retained; no score selection by result."
     ],
-    "catalogAtAudit": "Seis vendedores, seis avatares exclusivos e seis produtos exclusivos; um produto por vendedor."
+    "limits": [
+      "Medições de laboratório em preview de desenvolvimento.",
+      "Variação alta de TBT entre execuções; os três resultados válidos foram preservados.",
+      "Não foi repetido um baseline para este redesign; o HTML de referência pertence ao visual anterior e não deve ser comparado diretamente."
+    ]
   },
-  "mobile": {
-    "settings": {
-      "formFactor": "mobile",
-      "screenEmulation": {
-        "mobile": true,
-        "width": 412,
-        "height": 823,
-        "deviceScaleFactor": 1.75,
-        "disabled": false
-      },
-      "throttling": {
-        "rttMs": 150,
-        "throughputKbps": 1638.4,
-        "requestLatencyMs": 562.5,
-        "downloadThroughputKbps": 1474.5600000000002,
-        "uploadThroughputKbps": 675,
-        "cpuSlowdownMultiplier": 4
-      },
-      "throttlingMethod": "simulate",
-      "disableStorageReset": true,
-      "onlyCategories": [
-        "performance"
-      ],
-      "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36"
-    },
-    "withVendors": {
-      "runs": [
-        {
-          "id": "horizon-with-mobile-1",
-          "timestamp": "2026-11-04T19:44:22.842Z",
-          "score": 90,
-          "fcpMs": 1180.1585765197754,
-          "lcpMs": 1352.7746768310546,
-          "tbtMs": 415,
-          "cls": 0.00003952341088212718,
-          "transferBytes": 121101,
-          "reportSha256": "9b485e2a381c2365a586d37d941fe8c2fc068bba405ad34484ab9f57fce48e92"
+  "runs": [
+    {
+      "id": "redesign-with-mobile-1",
+      "form": "mobile",
+      "time": "2026-11-05T02:51:50.034Z",
+      "score": 69,
+      "fcpMs": 906.3972999999997,
+      "lcpMs": 1605.3972999999996,
+      "tbtMs": 2944,
+      "cls": 0.001219348396923513,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
         },
-        {
-          "id": "horizon-with-mobile-2",
-          "timestamp": "2026-11-04T19:44:36.129Z",
-          "score": 86,
-          "fcpMs": 1077.7278937438964,
-          "lcpMs": 1077.7278937438964,
-          "tbtMs": 560.3150062561035,
-          "cls": 0.00003952341088212718,
-          "transferBytes": 83158,
-          "reportSha256": "50c03daf1ed6b6a5a0b0e8f2c2bdad764a8649ba30a088adb8a75e68213f5fb2"
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
         },
-        {
-          "id": "horizon-with-mobile-3",
-          "timestamp": "2026-11-04T19:44:47.791Z",
-          "score": 95,
-          "fcpMs": 1122.92,
-          "lcpMs": 1122.92,
-          "tbtMs": 261.5,
-          "cls": 0.00003952341088212718,
-          "transferBytes": 29500,
-          "reportSha256": "3170e1538a9c30fd26f67faa4c2d1cf62b40c4675202851c58a7839df1838d68"
-        }
-      ],
-      "median": {
-        "score": 90,
-        "fcpMs": 1122.92,
-        "lcpMs": 1122.92,
-        "tbtMs": 415,
-        "cls": 0.00003952341088212718,
-        "transferBytes": 83158
+        "disableStorageReset": true
       }
     },
-    "baseline": {
-      "runs": [
-        {
-          "id": "horizon-baseline-mobile-1",
-          "timestamp": "2026-11-04T19:50:06.067Z",
-          "score": 79,
-          "fcpMs": 1122.0485265197754,
-          "lcpMs": 1258.6756608428955,
-          "tbtMs": 901.9999999999998,
-          "cls": 0.00003952341088212718,
-          "transferBytes": 27416,
-          "reportSha256": "0697ffba6972767253d558e2d1f61b4005f1f6c0c592b669736e05a5a933dd1b"
+    {
+      "id": "redesign-with-mobile-2",
+      "form": "mobile",
+      "time": "2026-11-05T02:51:09.003Z",
+      "score": 85,
+      "fcpMs": 1472.16986,
+      "lcpMs": 1472.16986,
+      "tbtMs": 566,
+      "cls": 0.00003952341088212718,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
         },
-        {
-          "id": "horizon-baseline-mobile-2",
-          "timestamp": "2026-11-04T19:50:19.598Z",
-          "score": 83,
-          "fcpMs": 1198.2534,
-          "lcpMs": 1198.2534,
-          "tbtMs": 684.5000000000005,
-          "cls": 0.00003952341088212718,
-          "transferBytes": 43469,
-          "reportSha256": "b54a217b4b314dfee0d722d239b68ca2ff379612f6d098ec5b192587b6136324"
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
         },
-        {
-          "id": "horizon-baseline-mobile-3",
-          "timestamp": "2026-11-04T19:50:31.873Z",
-          "score": 86,
-          "fcpMs": 1045.4968765197755,
-          "lcpMs": 1045.4968765197755,
-          "tbtMs": 555,
-          "cls": 0.00003952341088212718,
-          "transferBytes": 42691,
-          "reportSha256": "b109666d5709fec947061cda27f865469c777a404a607ab9b5b4ec7989952da0"
-        }
-      ],
-      "median": {
-        "score": 83,
-        "fcpMs": 1122.0485265197754,
-        "lcpMs": 1198.2534,
-        "tbtMs": 684.5000000000005,
-        "cls": 0.00003952341088212718,
-        "transferBytes": 42691
+        "disableStorageReset": true
+      }
+    },
+    {
+      "id": "redesign-with-mobile-3",
+      "form": "mobile",
+      "time": "2026-11-05T02:51:24.419Z",
+      "score": 83,
+      "fcpMs": 1262.5661,
+      "lcpMs": 1262.5661,
+      "tbtMs": 693.5,
+      "cls": 0.00003952341088212718,
+      "settings": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "disableStorageReset": true
+      }
+    },
+    {
+      "id": "redesign-with-desktop-1",
+      "form": "desktop",
+      "time": "2026-11-05T02:52:16.339Z",
+      "score": 100,
+      "fcpMs": 265.14412418823247,
+      "lcpMs": 265.14412418823247,
+      "tbtMs": 0,
+      "cls": 0.02665503613591921,
+      "settings": {
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "disableStorageReset": true
       }
     }
-  },
-  "desktop": {
-    "settings": {
-      "formFactor": "desktop",
-      "screenEmulation": {
-        "mobile": false,
-        "width": 1350,
-        "height": 940,
-        "deviceScaleFactor": 1,
-        "disabled": false
-      },
-      "throttling": {
-        "rttMs": 40,
-        "throughputKbps": 10240,
-        "requestLatencyMs": 0,
-        "downloadThroughputKbps": 0,
-        "uploadThroughputKbps": 0,
-        "cpuSlowdownMultiplier": 1
-      },
-      "throttlingMethod": "simulate",
-      "disableStorageReset": true,
-      "onlyCategories": [
-        "performance"
-      ],
-      "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
-    },
-    "run": {
-      "id": "horizon-with-desktop-1",
-      "timestamp": "2026-11-04T19:45:16.935Z",
-      "score": 100,
-      "fcpMs": 259.51832418823244,
-      "lcpMs": 284.64368467712404,
-      "tbtMs": 0,
-      "cls": 0.0050846035993637444,
-      "transferBytes": 43062,
-      "reportSha256": "4f54e114f865e583246854491a0f6540c79ff054417cadd677e4a980affdcd13"
-    },
-    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
-  },
-  "comparison": {
-    "mobileWithMinusBaseline": {
-      "score": 7,
-      "fcpMs": 0.8714734802247222,
-      "lcpMs": -75.33339999999998,
-      "tbtMs": -269.50000000000045,
-      "cls": 0
-    },
-    "interpretation": "O baseline teve TBT maior nesta coleta. Isso demonstra variacao de execucao/plataforma e nao prova que adicionar cards melhora performance."
-  },
+  ],
   "reports": {
     "mobile": "lighthouse-mobile.html",
-    "baseline": "lighthouse-baseline.html",
-    "desktop": "lighthouse-desktop.html"
-  },
-  "representativeSelection": "Mobile com vendedores: run1, score e TBT medianos. Baseline: run2, score e TBT medianos. Medianas de cada metrica calculadas independentemente."
+    "desktop": "lighthouse-desktop.html",
+    "historicalBaseline": "lighthouse-baseline.html"
+  }
 }

@@ -22,7 +22,15 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
   await mkdir(output, { recursive: true });
   for (const folder of folders) await cp(join(base, folder), join(output, folder), { recursive: true });
   for (const file of ['sections/ec-vendors-metaobject.liquid', 'templates/index.json', 'templates/page.vendors.json']) await cp(join(sourcePath, file), join(output, file));
+  await cp(join(sourcePath, 'assets/ec-storefront.css'), join(output, 'assets/ec-storefront.css'));
   await cp(join(sourcePath, 'LICENSE-HORIZON.md'), join(output, 'LICENSE.md'));
+  const layoutFile = join(output, 'layout/theme.liquid');
+  const layout = await readFile(layoutFile, 'utf8');
+  if (!layout.includes('</head>')) throw new Error('O layout do Horizon precisa conter </head>.');
+  await writeFile(layoutFile, layout.replace('</head>', "  {{ 'ec-storefront.css' | asset_url | stylesheet_tag }}\n  </head>"));
+  const logoFile = join(output, 'blocks/_header-logo.liquid');
+  const logo = await readFile(logoFile, 'utf8');
+  await writeFile(logoFile, logo.replaceAll('text_fallback: shop.name', "text_fallback: 'Desafio'"));
 
   const header = await readJson(join(output, 'sections/header-group.json'));
   for (const section of Object.values(header.sections)) {
@@ -30,7 +38,10 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
       section.settings = { ...section.settings, show_country: false, show_language: false };
       for (const block of Object.values(section.blocks || {})) if (block.type === '_header-menu') block.settings.menu = menu;
     }
-    if (section.type === 'header-announcements') for (const block of Object.values(section.blocks || {})) if (block.type === '_announcement') block.settings.text = 'Uma equipe, seis especialidades.';
+    if (section.type === 'header-announcements') {
+      section.settings = { ...section.settings, background_color: '#ffcf00', divider_width: 0, 'padding-block-start': 9, 'padding-block-end': 9 };
+      for (const block of Object.values(section.blocks || {})) if (block.type === '_announcement') block.settings.text = 'Produtos escolhidos por quem entende.';
+    }
   }
   await writeJson(join(output, 'sections/header-group.json'), header);
 
@@ -43,8 +54,8 @@ export async function assembleHorizon({ basePath, outputPath, sourcePath = proce
         section.block_order = (section.block_order || []).filter((key) => key !== id);
       }
       for (const child of Object.values(block.blocks || {})) {
-        if (child.type === 'text' && child.settings.text?.includes('Join our email list')) child.settings.text = '<h2>Uma equipe, seis especialidades.</h2>';
-        if (child.type === 'text' && child.settings.text?.includes('Get exclusive deals')) child.settings.text = '<p>Camisetas, calçados, mochilas, relógios, óculos e bonés em um só lugar.</p>';
+        if (child.type === 'text' && child.settings.text?.includes('Join our email list')) child.settings.text = '<h2>Uma boa escolha faz a diferença.</h2>';
+        if (child.type === 'text' && child.settings.text?.includes('Get exclusive deals')) child.settings.text = '<p>Conheça nossos vendedores e descubra a seleção de cada um. Do seu jeito, para o seu dia a dia.</p>';
       }
     }
   }

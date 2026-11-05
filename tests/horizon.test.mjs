@@ -21,14 +21,19 @@ test('Horizon integration preserves native commerce templates and uses the vendo
   try {
     for (const dir of ['layout', 'templates', 'sections', 'config', 'assets', 'blocks', 'snippets', 'locales']) await mkdir(join(base, dir), { recursive: true });
     for (const name of ['product', 'cart', 'collection']) await writeFile(join(base, 'templates', name + '.json'), JSON.stringify({ native: name }));
-    await writeFile(join(base, 'layout/theme.liquid'), 'native Horizon layout');
+    await writeFile(join(base, 'layout/theme.liquid'), '<html><head>{{ content_for_header }}</head><body>{{ content_for_layout }}</body></html>');
+    await writeFile(join(base, 'blocks/_header-logo.liquid'), 'text_fallback: shop.name');
     await writeFile(join(base, 'config/settings_schema.json'), JSON.stringify([{ name: 'theme_info', theme_name: 'Horizon' }]));
     await writeFile(join(base, 'config/settings_data.json'), JSON.stringify({ current: { page_width: 'narrow', preserved: true } }));
     await writeFile(join(base, 'sections/header-group.json'), JSON.stringify({ sections: { header: { type: 'header', settings: {}, blocks: { menu: { type: '_header-menu', settings: { menu: 'main-menu' } } } }, announce: { type: 'header-announcements', blocks: { a: { type: '_announcement', settings: { text: 'Welcome' } } } } }, order: ['announce', 'header'] }));
     await writeFile(join(base, 'sections/footer-group.json'), JSON.stringify({ sections: { footer: { type: 'footer', blocks: { social: { type: 'social-links', settings: { instagram_url: 'https://instagram.com/' } } } } }, order: ['footer'] }));
     await assembleHorizon({ basePath: base, outputPath: output, sourcePath: process.cwd() });
     for (const name of ['product', 'cart', 'collection']) assert.deepEqual(JSON.parse(await readFile(join(output, 'templates', name + '.json'))), { native: name });
-    assert.equal(await readFile(join(output, 'layout/theme.liquid'), 'utf8'), 'native Horizon layout');
+    const layout = await readFile(join(output, 'layout/theme.liquid'), 'utf8');
+    assert.match(layout, /ec-storefront.css/);
+    assert.ok(layout.includes('{{ content_for_header }}'));
+    assert.ok(layout.includes('{{ content_for_layout }}'));
+    assert.match(await readFile(join(output, 'assets/ec-storefront.css'), 'utf8'), /header-logo/);
     const home = JSON.parse(await readFile(join(output, 'templates/index.json')));
     assert.equal(home.sections.vendors.type, 'ec-vendors-metaobject');
     assert.equal(home.sections.vendors.settings.heading_tag, 'h1');

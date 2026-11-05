@@ -1,6 +1,6 @@
 {
   "sections": {
-    "vendors": { "type": "ec-vendors-metaobject", "settings": { "heading_tag": "h1" } }
+    "vendors": { "type": "ec-vendors-metaobject", "settings": { "heading_tag": "h1", "title": "Conheça nossos vendedores", "subtitle": "Pessoas diferentes. Uma seleção de produtos feita por quem entende.", "show_product_details": true, "section_padding": 64, "card_padding": 24, "card_background": "#fffef9", "border_color": "#e4bf41", "section_background": "#f6f6f3" } }
   },
   "order": ["vendors"]
 }

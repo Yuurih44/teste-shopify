@@ -29,30 +29,40 @@
     line-height: 1.4;
   }
   #ec-vendors-{{ section.id }} * { box-sizing: border-box; }
-  #ec-vendors-{{ section.id }} .ec-vendors__inner { width: 100%; max-width: 1578px; margin-inline: auto; }
-  #ec-vendors-{{ section.id }} .ec-vendors__header { text-align: center; margin-bottom: 80px; }
-  #ec-vendors-{{ section.id }} .ec-vendors__title { color: inherit; font: inherit; font-size: clamp(30px, 3.2vw, 48px); line-height: 1.2; font-weight: 700; margin: 0; overflow-wrap: anywhere; }
-  #ec-vendors-{{ section.id }} .ec-vendors__subtitle { font-size: clamp(17px, 1.6vw, 24px); line-height: 1.5; max-width: 72ch; margin: 14px auto 0; overflow-wrap: anywhere; }
-  #ec-vendors-{{ section.id }} .ec-vendors__grid { display: grid; grid-template-columns: repeat(var(--ec-columns-desktop), minmax(0, 1fr)); gap: 34px; list-style: none; padding: 0; margin: 0; }
-  #ec-vendors-{{ section.id }} .ec-vendors__card { container: ec-vendor / inline-size; min-width: 0; min-height: 270px; padding: var(--ec-card-padding); border: 2px solid var(--ec-border); border-radius: 32px; background: var(--ec-card-background); }
+  #ec-vendors-{{ section.id }} .ec-vendors__inner { width: 100%; max-width: 1200px; margin-inline: auto; }
+  #ec-vendors-{{ section.id }} .ec-vendors__header { text-align: center; margin-bottom: 40px; }
+  #ec-vendors-{{ section.id }} .ec-vendors__title { color: inherit; font: inherit; font-size: clamp(28px, 3.2vw, 42px); letter-spacing: -0.045em; line-height: 1.15; font-weight: 700; margin: 0; overflow-wrap: anywhere; }
+  #ec-vendors-{{ section.id }} .ec-vendors__subtitle { font-size: 16px; line-height: 1.6; color: #66645f; max-width: 55ch; margin: 14px auto 0; overflow-wrap: anywhere; }
+  #ec-vendors-{{ section.id }} .ec-vendors__grid { display: grid; grid-template-columns: repeat(var(--ec-columns-desktop), minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; margin: 0; }
+  #ec-vendors-{{ section.id }} .ec-vendors__card { container: ec-vendor / inline-size; min-width: 0; padding: var(--ec-card-padding); border: 1px solid var(--ec-border); border-radius: 20px; background: var(--ec-card-background); }
   #ec-vendors-{{ section.id }} .ec-vendors__identity { display: flex; align-items: center; gap: 12px; min-width: 0; }
-  #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 60px; height: 60px; flex: 0 0 60px; overflow: hidden; border-radius: 50%; }
+  #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 48px; height: 48px; flex: 0 0 48px; overflow: hidden; border-radius: 50%; }
   #ec-vendors-{{ section.id }} .ec-vendors__avatar img,
   #ec-vendors-{{ section.id }} .ec-vendors__avatar svg { display: block; width: 100%; height: 100%; object-fit: cover; }
-  #ec-vendors-{{ section.id }} .ec-vendors__name { margin: 0; color: inherit; font: inherit; font-size: 24px; line-height: 1.25; font-weight: 700; overflow-wrap: anywhere; }
+  #ec-vendors-{{ section.id }} .ec-vendors__name { margin: 0; color: inherit; font: inherit; font-size: 18px; letter-spacing: -0.025em; line-height: 1.3; font-weight: 650; overflow-wrap: anywhere; }
   #ec-vendors-{{ section.id }} .ec-vendors__details { min-width: 0; flex: 1; }
-  #ec-vendors-{{ section.id }} .ec-vendors__role { margin: 2px 0 0; font-size: 24px; line-height: 1.3; overflow-wrap: anywhere; }
-  #ec-vendors-{{ section.id }} .ec-vendors__badge { display: grid; place-items: center; width: 50px; height: 50px; flex: 0 0 50px; margin-left: auto; border: 1px solid currentColor; border-radius: 50%; }
+  #ec-vendors-{{ section.id }} .ec-vendors__role { margin: 4px 0 0; color: #66645f; font-size: 13px; line-height: 1.4; overflow-wrap: anywhere; }
+  #ec-vendors-{{ section.id }} .ec-vendors__badge { display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; margin-left: auto; border: 1px solid currentColor; border-radius: 50%; }
   #ec-vendors-{{ section.id }} .ec-vendors__badge--ouro { color: #997000; background: #f2dfa0; }
   #ec-vendors-{{ section.id }} .ec-vendors__badge--prata { color: #545661; background: #e1e1e7; }
   #ec-vendors-{{ section.id }} .ec-vendors__badge--bronze { color: #923b1b; background: #f1b497; }
-  #ec-vendors-{{ section.id }} .ec-vendors__badge svg { width: 28px; height: 28px; }
-  #ec-vendors-{{ section.id }} .ec-vendors__products-label { margin: 40px 0 12px; font-size: 14px; color: #555; }
+  #ec-vendors-{{ section.id }} .ec-vendors__badge svg { width: 18px; height: 18px; }
+  #ec-vendors-{{ section.id }} .ec-vendors__products-label { margin: 22px 0 12px; padding-top: 18px; border-top: 1px solid #eae7de; font-size: 12px; color: #66645f; }
   #ec-vendors-{{ section.id }} .ec-vendors__products { display: flex; flex-wrap: wrap; gap: 12px 18px; list-style: none; margin: 0; padding: 0; }
   #ec-vendors-{{ section.id }} .ec-vendors__product { display: grid; place-items: center; width: 44px; height: 44px; color: inherit; border-radius: 4px; }
   #ec-vendors-{{ section.id }} .ec-vendors__product img { display: block; width: 44px; height: 44px; object-fit: contain; }
   #ec-vendors-{{ section.id }} .ec-vendors__product svg { width: 42px; height: 36px; }
   #ec-vendors-{{ section.id }} .ec-vendors__product:hover { background: #0000000d; }
+  #ec-vendors-{{ section.id }} .ec-vendors__products--detailed { display: grid; gap: 10px; }
+  #ec-vendors-{{ section.id }} .ec-vendors__products--detailed > li { min-width: 0; }
+  #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product { grid-template-columns: 76px minmax(0, 1fr); gap: 16px; align-items: center; justify-items: start; width: 100%; height: auto; min-height: 100px; padding: 12px; border: 1px solid transparent; border-radius: 12px; background: #f1f0ea; text-decoration: none; }
+  #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product:hover { border-color: var(--ec-border); background: #eeece3; }
+  #ec-vendors-{{ section.id }} .ec-vendors__products--detailed img,
+  #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product > svg { width: 76px; height: 76px; object-fit: contain; }
+  #ec-vendors-{{ section.id }} .ec-vendors__product-info { display: grid; gap: 5px; min-width: 0; overflow-wrap: anywhere; }
+  #ec-vendors-{{ section.id }} .ec-vendors__product-name { font-size: 14px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+  #ec-vendors-{{ section.id }} .ec-vendors__product-price { color: #66645f; font-size: 13px; }
+  #ec-vendors-{{ section.id }} .ec-vendors__product-action { margin-top: 5px; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
   #ec-vendors-{{ section.id }} a:focus-visible { outline: 3px solid #005fcc; outline-offset: 4px; }
   #ec-vendors-{{ section.id }} .ec-vendors__empty { text-align: center; padding: 32px; border: 1px dashed #777; border-radius: 12px; }
   #ec-vendors-{{ section.id }} .ec-vendors__pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 32px; }
@@ -64,25 +74,30 @@
     #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 42px; height: 42px; flex: 0 1 42px; max-width: 100%; }
     #ec-vendors-{{ section.id }} .ec-vendors__badge { width: 34px; height: 34px; flex: 0 1 34px; max-width: 100%; }
     #ec-vendors-{{ section.id }} .ec-vendors__badge svg { width: 22px; height: 22px; }
-    #ec-vendors-{{ section.id }} .ec-vendors__name,
-    #ec-vendors-{{ section.id }} .ec-vendors__role { font-size: 16px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__name { font-size: 16px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product { grid-template-columns: 56px minmax(0, 1fr); gap: 10px; padding: 10px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__products--detailed img,
+    #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product > svg { width: 56px; height: 56px; }
     #ec-vendors-{{ section.id }} .ec-vendors__products { gap: 8px; }
+  }
+  @container ec-vendor (max-width: 160px) {
+    #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product { grid-template-columns: minmax(0, 1fr); }
+    #ec-vendors-{{ section.id }} .ec-vendors__products--detailed img,
+    #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product > svg { max-width: 100%; height: auto; aspect-ratio: 1; }
   }
   @media (max-width: 749px) {
     #ec-vendors-{{ section.id }} { padding: min({{ section.settings.section_padding }}px, 56px) 16px; }
     #ec-vendors-{{ section.id }} .ec-vendors__header { margin-bottom: 36px; }
     #ec-vendors-{{ section.id }} .ec-vendors__grid { grid-template-columns: repeat(var(--ec-columns-mobile), minmax(0, 1fr)); gap: 20px; }
-    #ec-vendors-{{ section.id }} .ec-vendors__card { min-height: 230px; padding: min(var(--ec-card-padding), 24px); border-radius: 24px; }
-    #ec-vendors-{{ section.id }} .ec-vendors__name,
-    #ec-vendors-{{ section.id }} .ec-vendors__role { font-size: 20px; }
-    #ec-vendors-{{ section.id }} .ec-vendors__products-label { margin-top: 28px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__card { padding: min(var(--ec-card-padding), 24px); border-radius: 18px; }
+    #ec-vendors-{{ section.id }} .ec-vendors__name { font-size: 18px; }
     {% if section.settings.columns_mobile == '2' %}
       #ec-vendors-{{ section.id }} .ec-vendors__card { padding: min(var(--ec-card-padding), 14px); }
       #ec-vendors-{{ section.id }} .ec-vendors__identity { flex-wrap: wrap; gap: 8px; }
       #ec-vendors-{{ section.id }} .ec-vendors__avatar { width: 42px; height: 42px; flex-basis: 42px; }
       #ec-vendors-{{ section.id }} .ec-vendors__details { order: 1; width: 100%; }
-      #ec-vendors-{{ section.id }} .ec-vendors__name,
-      #ec-vendors-{{ section.id }} .ec-vendors__role { font-size: 16px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__name { font-size: 16px; }
+      #ec-vendors-{{ section.id }} .ec-vendors__products--detailed .ec-vendors__product { grid-template-columns: minmax(0, 1fr); }
       #ec-vendors-{{ section.id }} .ec-vendors__badge { width: 34px; height: 34px; flex-basis: 34px; }
       #ec-vendors-{{ section.id }} .ec-vendors__badge svg { width: 22px; height: 22px; }
       #ec-vendors-{{ section.id }} .ec-vendors__products { gap: 8px; }
@@ -134,15 +149,26 @@
               </div>
               {%- if vendor_products != blank -%}
                 <p class="ec-vendors__products-label">Produtos vendidos</p>
-                <ul class="ec-vendors__products" role="list" aria-label="Produtos vendidos por {{ vendor_name | escape }}">
+                <ul class="ec-vendors__products{% if section.settings.show_product_details %} ec-vendors__products--detailed{% endif %}" role="list" aria-label="Produtos vendidos por {{ vendor_name | escape }}">
                   {%- for vendor_product in vendor_products -%}
                     {%- if vendor_product.url != blank -%}
                       <li>
                         <a class="ec-vendors__product" href="{{ vendor_product.url | escape }}" aria-label="{{ vendor_product.title | escape }}" title="{{ vendor_product.title | escape }}">
                           {%- if vendor_product.featured_image != blank -%}
-                            {{ vendor_product.featured_image | image_url: width: 88 | image_tag: widths: '44, 88', sizes: '44px', loading: 'lazy', alt: '' }}
+                            {%- if section.settings.show_product_details -%}
+                              {{ vendor_product.featured_image | image_url: width: 152 | image_tag: widths: '76, 152', sizes: '76px', loading: 'lazy', alt: '' }}
+                            {%- else -%}
+                              {{ vendor_product.featured_image | image_url: width: 88 | image_tag: widths: '44, 88', sizes: '44px', loading: 'lazy', alt: '' }}
+                            {%- endif -%}
                           {%- else -%}
                             {{ shirt_icon }}
+                          {%- endif -%}
+                          {%- if section.settings.show_product_details -%}
+                            <span class="ec-vendors__product-info">
+                              <span class="ec-vendors__product-name">{{ vendor_product.title | escape }}</span>
+                              {%- if vendor_product.price != blank -%}<span class="ec-vendors__product-price">{{ vendor_product.price | money }}</span>{%- endif -%}
+                              <span class="ec-vendors__product-action">Ver produto</span>
+                            </span>
                           {%- endif -%}
                         </a>
                       </li>
@@ -189,6 +215,7 @@
     { "type": "header", "content": "Layout" },
     { "type": "range", "id": "columns_desktop", "label": "Itens por linha no desktop", "min": 1, "max": 4, "step": 1, "default": 3 },
     { "type": "select", "id": "columns_mobile", "label": "Itens por linha no mobile", "options": [ { "value": "1", "label": "1 coluna" }, { "value": "2", "label": "2 colunas" } ], "default": "1" },
+    { "type": "checkbox", "id": "show_product_details", "label": "Exibir nome e preço dos produtos", "default": false },
     { "type": "color", "id": "border_color", "label": "Cor da borda", "default": "#ffcf00" },
     { "type": "color", "id": "card_background", "label": "Cor de fundo do card", "default": "#fffcf7" },
     { "type": "color", "id": "section_background", "label": "Cor de fundo da seção", "default": "#f5f5f5" },

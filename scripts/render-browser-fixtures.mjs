@@ -5,12 +5,14 @@ const entries = Array.from({ length: 5 }, (_, i) => ({
   name: { value: i === 0 ? 'UmNomeMuitoCompridoSemEspaçosParaValidarQuebraDeLinha' : `Vendedor ${i + 1}` },
   role: { value: 'Consultor de vendas e atendimento' },
   tier: { value: ['ouro', 'prata', 'bronze'][i % 3] },
-  products: { value: Array.from({ length: 7 }, (_, j) => ({ title: `Produto ${j + 1}`, url: `/products/produto-${j + 1}` })) },
+  products: { value: Array.from({ length: 7 }, (_, j) => ({ title: `Produto ${j + 1}`, price: 32990, url: `/products/produto-${j + 1}` })) },
 }));
 const sections = [];
 for (const desktop of [1, 2, 3, 4]) {
   for (const mobile of ['1', '2']) {
-    sections.push(await render(entries, { columns_desktop: desktop, columns_mobile: mobile, card_padding: 48, section_padding: 0 }, `matrix-${desktop}-${mobile}`));
+    for (const details of [false, true]) {
+      sections.push(await render(entries, { columns_desktop: desktop, columns_mobile: mobile, show_product_details: details, card_padding: 48, section_padding: 0 }, `matrix-${desktop}-${mobile}-${details}`));
+    }
   }
 }
 await mkdir('dist/validation', { recursive: true });

@@ -10,7 +10,7 @@ Senha de visitante: `awwhop`.
 
 O preview usa o tema **Horizon em rascunho**, ID `195588358514`, na loja `desafio-teste.myshopify.com`. O tema publicado foi preservado. O link compartilhado foi gerado em 04/11/2026 e tem validade limitada pela Shopify; para renovar, abra o preview do Horizon e use **Copy link** na barra de pré-visualização.
 
-O menu possui Início, Vendedores e Produtos. Os ícones dos cards abrem os respectivos produtos. Cada vendedor possui uma especialidade e um produto exclusivo.
+O menu possui Início, Vendedores e Produtos. Cada vendedor possui uma especialidade e um produto exclusivo. Os cards exibem imagem, nome, preço e acesso à página do produto. A apresentação usa uma faixa amarela, conteúdo limitado a 1.200 px e espaçamentos compactos.
 
 ## Instalar apenas a seção
 
@@ -54,6 +54,7 @@ Sem foto, aparece um avatar padrão. Campos opcionais vazios não geram imagens 
 | Tipo do metaobjeto | `store_vendor` por padrão |
 | Colunas desktop | 1 a 4 |
 | Colunas mobile | 1 ou 2 |
+| Detalhes dos produtos | Nome, preço e link; opcional, ativado na demonstração |
 | Cores | Borda, fundo do card e fundo da seção |
 | Padding do card | 0 a 48 px |
 | Espaçamento vertical | 0 a 160 px |
@@ -75,7 +76,7 @@ npm run check
 shopify theme push --store sua-loja.myshopify.com --theme ID_DO_RASCUNHO --path dist/horizon --nodelete
 ```
 
-O resultado fica em `dist/horizon`. O script preserva os componentes nativos de comércio, substitui a home pela seção de vendedores, configura o cabeçalho e o rodapé e direciona as sugestões do carrinho à coleção `produtos`. A largura global passa a ser ampla. Os arquivos do tema original não são alterados.
+O resultado fica em `dist/horizon`. O script preserva os componentes nativos de comércio, substitui a home pela seção de vendedores, configura o cabeçalho e o rodapé e direciona as sugestões do carrinho à coleção `produtos`. Na cópia montada, adiciona o stylesheet `assets/ec-storefront.css` ao layout e usa “Desafio” como fallback textual do logo. O arquivo de estilo ajusta a largura, a tipografia e os elementos do tema ao visual da seção. Os arquivos do tema original não são alterados.
 
 Prepare os recursos no Admin:
 
@@ -89,7 +90,7 @@ No Windows, `npm run package` gera `dist/desafio-vendedores.zip` a partir do Hor
 
 ## Validação
 
-- 12 testes automatizados: renderização Liquid com cinco vendedores, zero registros, definição ausente, campos opcionais, escape de conteúdo, links, instâncias independentes, schema, nível do título, preservação dos templates nativos e caminhos do ZIP.
+- 13 testes automatizados: renderização Liquid com cinco vendedores, zero registros, definição ausente, campos opcionais, escape de conteúdo, links, instâncias independentes, schema, nível do título, detalhes e preço dos produtos, preservação dos templates nativos e caminhos do ZIP.
 - Theme Check da integração: zero erros. Os sete avisos também aparecem no Horizon original, sem novos avisos da seção.
 - Seis vendedores ativos conferidos na vitrine; entradas em rascunho não renderizadas.
 - Título, subtítulo, colunas, cores e padding verificados no Theme Editor.
@@ -101,18 +102,18 @@ Os testes locais usam LiquidJS e adaptam os tags exclusivos da Shopify. Eles com
 
 ## Desempenho e evidências
 
-Lighthouse 13.6.0 no preview real: três execuções mobile por cenário e uma desktop. A referência mantém o mesmo Horizon, CSS, título e subtítulo estáticos, sem consulta ao metaobjeto nem cards. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
+Lighthouse 13.6.0 no preview real do redesign: três execuções mobile e uma desktop. A autenticação de visitante foi feita antes das auditorias, sem exportar cookies.
 
-| Métrica — mediana de três execuções mobile | Com vendedores | Referência sem cards |
+| Métrica | Mobile — mediana de três execuções | Desktop |
 | --- | --- | --- |
-| Performance | 90/100 | 83/100 |
-| FCP | 1,123 s | 1,122 s |
-| LCP | 1,123 s | 1,198 s |
-| TBT | 415 ms | 684,5 ms |
-| CLS | 0,00004 | 0,00004 |
+| Performance | 83/100 | 100/100 |
+| FCP | 1,263 s | 0,265 s |
+| LCP | 1,472 s | 0,265 s |
+| TBT | 693,5 ms | 0 ms |
+| CLS | 0,00004 | 0,02666 |
 
-O preset desktop oficial obteve 100/100, LCP de 285 ms e TBT de 0 ms. Não apareceu regressão relevante nesta amostra. A variação entre execuções impede atribuir a pontuação superior à seção. São medições de laboratório no preview de desenvolvimento, com os scripts da plataforma presentes, e não métricas de campo de uma loja publicada.
+Os três resultados mobile foram 69, 85 e 83. Houve variação alta de TBT; todos os resultados válidos foram preservados. A seção continua sem JavaScript. São medições de laboratório no preview de desenvolvimento, com os scripts da plataforma presentes, e não métricas de campo de uma loja publicada. O HTML de referência sem cards pertence ao visual anterior; não foi repetido um baseline para este redesign e não é feita comparação direta entre eles.
 
-[Resumo das medições](docs/evidence/lighthouse-summary.json) · [Lighthouse mobile](docs/evidence/lighthouse-mobile.html) · [Referência sem cards](docs/evidence/lighthouse-baseline.html) · [Lighthouse desktop](docs/evidence/lighthouse-desktop.html)
+[Resumo das medições](docs/evidence/lighthouse-summary.json) · [Lighthouse mobile](docs/evidence/lighthouse-mobile.html) · [Referência do visual anterior](docs/evidence/lighthouse-baseline.html) · [Lighthouse desktop](docs/evidence/lighthouse-desktop.html)
 
 [Desktop](docs/evidence/desktop.png) · [Mobile](docs/evidence/mobile.png) · [Zero registros](docs/evidence/zero-records.png)

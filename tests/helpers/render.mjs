@@ -13,6 +13,7 @@ export async function render(entries = [], settings = {}, id = 'vendors-test', d
   const source = await readFile(new URL('../../sections/ec-vendors-metaobject.liquid', import.meta.url), 'utf8');
   const engine = new Liquid();
   engine.registerFilter('image_url', (image) => image?.url || '');
+  engine.registerFilter('money', (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value / 100));
   engine.registerFilter('image_tag', (url) => `<img src="${url}" width="60" height="60" alt="">`);
   const template = source
     .replace(/{%[-]?\s*schema\s*[-]?%}[\s\S]*?{%[-]?\s*endschema\s*[-]?%}/g, '')
